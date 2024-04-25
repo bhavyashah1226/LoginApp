@@ -22,38 +22,38 @@ Solution: Ensure the tool generating code is trustworthy and includes proper val
 """
   Scenario 1: Test to confirm getPassword function returns correct password.
 
-  Details:  
+  Details:
     TestName: validatePasswordReturn()
-    Description: This test is intended to check if the getPassword method in the class returns the correct password value that was initially set in the class instance. 
+    Description: This test is intended to check if the getPassword method in the class returns the correct password value that was initially set in the class instance.
   Execution:
     Arrange: Instantiate the parent class with a specified password using whatever method is available (either through constructor or setter).
     Act: Invoke the getPassword() method.
     Assert: Use the assertEquals method from JUnit to compare the returned password with the expected password.
-  Validation: 
+  Validation:
     The assertion validates that the returned password matches the expected password. The importance of this test is to ensure that the getPassword function retrieves the correct password data from a given instance of the class.
 
   Scenario 2: Test to validate that getPassword function returns null when password is not set.
 
-  Details:  
+  Details:
     TestName: passwordReturnForUninitializedPassword()
     Description: This test is meant to validate the getPassword method when password has not been set in the class instance. It checks the method's capability of handling null values.
   Execution:
     Arrange: Instantiate the parent class without setting a password.
     Act: Call the getPassword() method on the class instance.
     Assert: Use the assertNull method from JUnit to ascertain that the returned value is null.
-  Validation: 
+  Validation:
     The assertion verifies if the getPassword function returns null when no password has been set. The importance of this test lies in its capacity to confirm that the method can handle null values correctly.
 
   Scenario 3: Test to validate getPassword function with unusual or special character passwords.
 
-  Details:  
+  Details:
     TestName: passwordReturnForSpecialCharacterPassword()
     Description: This test is intended to check if getPassword method correctly handles passwords that contain special or unusual characters.
   Execution:
     Arrange: Instantiate the parent class with a password containing special or unusual characters.
     Act: Invoke getPassword() on the class instance.
     Assert: Use the assertEquals method from JUnit to compare the returned password with the expected password.
-  Validation: 
+  Validation:
     The assertion aims to verify if the getPassword function returns the exact password, including special characters. It also verifies the method's ability to handle special characters, which might be present in actual passwords.
 """
 */
@@ -67,32 +67,35 @@ import static org.junit.Assert.*;
 
 public class LoginPostRequestGetPasswordTest {
 
-    private LoginPostRequest loginPostRequest;
+	private LoginPostRequest loginPostRequest;
 
-    @Before
-    public void setUp() {
-        loginPostRequest = new LoginPostRequest();
-    }
+	@Before
+	public void setUp() {
+		loginPostRequest = new LoginPostRequest();
+	}
 
-    // Scenario 1: Test to confirm getPassword function returns correct password.
-    @Test
-    public void validatePasswordReturn() {
-        String password = "password123";
-        loginPostRequest.setPassword(password);
-        assertEquals("Returned password should be equal to set password", password, loginPostRequest.getPassword());
-    }
+	// Scenario 1: Test to confirm getPassword function returns correct password.
+	@Test
+	public void validatePasswordReturn() {
+		String password = "password123";
+		loginPostRequest.setPassword(password);
+		assertEquals("Returned password should be equal to set password", password, loginPostRequest.getPassword());
+	}
 
-    // Scenario 2: Test to validate that getPassword function returns null when password is not set.
-    @Test
-    public void passwordReturnForUninitializedPassword() {
-        assertNull("Returned password should be null as no password is set", loginPostRequest.getPassword());
-    }
+	// Scenario 2: Test to validate that getPassword function returns null when password
+	// is not set.
+	@Test
+	public void passwordReturnForUninitializedPassword() {
+		assertNull("Returned password should be null as no password is set", loginPostRequest.getPassword());
+	}
 
-    // Scenario 3: Test to validate getPassword function with unusual or special character passwords.
-    @Test
-    public void passwordReturnForSpecialCharacterPassword() {
-        String password = "@p@$w0rd123!";
-        loginPostRequest.setPassword(password);
-        assertEquals("Returned password should be equal to set password", password, loginPostRequest.getPassword());
-    }
+	// Scenario 3: Test to validate getPassword function with unusual or special character
+	// passwords.
+	@Test
+	public void passwordReturnForSpecialCharacterPassword() {
+		String password = "@p@$w0rd123!";
+		loginPostRequest.setPassword(password);
+		assertEquals("Returned password should be equal to set password", password, loginPostRequest.getPassword());
+	}
+
 }

@@ -32,49 +32,40 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "credentials-obscured", description = "the credentials-obscured API")
 public interface CredentialsObscuredApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /credentials-obscured : Check username and password fields obscured status
-     *
-     * @return Successful operation - fields are obscured (status code 200)
-     */
-    @Operation(
-        operationId = "credentialsObscuredGet",
-        summary = "Check username and password fields obscured status",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation - fields are obscured", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = CredentialsObscuredGet200Response.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/credentials-obscured",
-        produces = { "application/json" }
-    )
-    
-    default ResponseEntity<CredentialsObscuredGet200Response> credentialsObscuredGet(
-        
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"obscured\" : true }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /credentials-obscured : Check username and password fields obscured status
+	 * @return Successful operation - fields are obscured (status code 200)
+	 */
+	@Operation(operationId = "credentialsObscuredGet", summary = "Check username and password fields obscured status",
+			responses = { @ApiResponse(responseCode = "200", description = "Successful operation - fields are obscured",
+					content = { @Content(mediaType = "application/json",
+							schema = @Schema(implementation = CredentialsObscuredGet200Response.class)) }) })
+	@RequestMapping(method = RequestMethod.GET, value = "/credentials-obscured", produces = { "application/json" })
 
-    }
+	default ResponseEntity<CredentialsObscuredGet200Response> credentialsObscuredGet(
+
+	) {
+		getRequest().ifPresent(request -> {
+			for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+				if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+					String exampleString = "{ \"obscured\" : true }";
+					ApiUtil.setExampleResponse(request, "application/json", exampleString);
+					break;
+				}
+			}
+		});
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

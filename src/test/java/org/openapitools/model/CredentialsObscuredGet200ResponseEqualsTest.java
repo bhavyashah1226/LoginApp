@@ -26,38 +26,38 @@ Solution: Use the 'instanceof' operator to check if 'o' is of the same type or a
 """
 Scenario 1: Test to check if an object is identical to itself
 
-Details:  
+Details:
   TestName: testIdentityCheckInEquals.
   Description: This test is designed to verify if the equals() method returns true when the object reference is identical to itself.
 Execution:
   Arrange: Instantiate a 'CredentialsObscuredGet200Response' object.
   Act: Invoke the equals() method by passing the same object reference as a parameter.
   Assert: Assert if the equals() has returned true.
-Validation: 
+Validation:
   The assertion should verify if 'equals()' returns true when the object is compared to itself. It ensures that equals() abides by the reflexivity property prescribed for it, in accordance with Java's contract for the equals() method.
 
-Scenario 2: Test to check if equals() method returns false when passed parameter is Null 
+Scenario 2: Test to check if equals() method returns false when passed parameter is Null
 
-Details:  
+Details:
   TestName: testNullOrOtherClassEqualsCheck.
   Description: This test ensures that the equals() method returns false when the parameter is either Null or not the same class as 'CredentialsObscuredGet200Response'.
 Execution:
   Arrange: Instantiate a 'CredentialsObscuredGet200Response' object and a Null object or an instance of other class.
   Act: Invoke the equals() method by passing the Null or other class instance.
   Assert: Check if the equals() has returned false.
-Validation: 
+Validation:
   The assertion confirms if 'equals()' returns false when passed a Null object or an object of another class. This adheres to the principle that an object must never be equal to a null or an object of a different class.
 
 Scenario 3: Test to ensure comparable objects of the same class return true
 
-Details:  
+Details:
   TestName: testClassEqualityCheck.
   Description: This test is intended to check if objects of the 'CredentialsObscuredGet200Response' class are considered equal when their 'obscured' attributes match.
 Execution:
   Arrange: Create two 'CredentialsObscuredGet200Response' objects with identical 'obscured' parameters.
   Act: Invoke the equals() method from one object and pass the other as the parameter.
   Assert: Verify if equals() returns true.
-Validation: 
+Validation:
   The test confirms if 'equals()' returns true when two distinct objects of the 'CredentialsObscuredGet200Response' class have identical 'obscured' attributes. It validates that the 'equals()' method correctly identifies equal objects based on the matching attribute.
 """
 */
@@ -70,43 +70,44 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CredentialsObscuredGet200ResponseEqualsTest {
-  
-  private CredentialsObscuredGet200Response credentialsObscuredGet200Response1;
-  private CredentialsObscuredGet200Response credentialsObscuredGet200Response2;
-  
-  @Before
-  public void setUp() {
-    credentialsObscuredGet200Response1 = new CredentialsObscuredGet200Response();
-    credentialsObscuredGet200Response2 = new CredentialsObscuredGet200Response();
-  }
-  
-  @Test
-  public void testIdentityCheckInEquals() {
-    // Arrange
-    credentialsObscuredGet200Response1.setObscured(true);
-    
-    // Act & Assert
-    Assert.assertTrue(credentialsObscuredGet200Response1.equals(credentialsObscuredGet200Response1));
-  }
-  
-  @Test
-  public void testNullOrOtherClassEqualsCheck() {
-    // Arrange
-    credentialsObscuredGet200Response1.setObscured(true);
-    
-    // Act & Assert
-    Assert.assertFalse(credentialsObscuredGet200Response1.equals(null));
-    Assert.assertFalse(credentialsObscuredGet200Response1.equals(new String("Test")));
-  }
-  
-  @Test
-  public void testClassEqualityCheck() {
-    // Arrange
-    credentialsObscuredGet200Response1.setObscured(true);
-    credentialsObscuredGet200Response2.setObscured(true);
-    
-    // Act & Assert
-    Assert.assertTrue(credentialsObscuredGet200Response1.equals(credentialsObscuredGet200Response2));
-  }
+
+	private CredentialsObscuredGet200Response credentialsObscuredGet200Response1;
+
+	private CredentialsObscuredGet200Response credentialsObscuredGet200Response2;
+
+	@Before
+	public void setUp() {
+		credentialsObscuredGet200Response1 = new CredentialsObscuredGet200Response();
+		credentialsObscuredGet200Response2 = new CredentialsObscuredGet200Response();
+	}
+
+	@Test
+	public void testIdentityCheckInEquals() {
+		// Arrange
+		credentialsObscuredGet200Response1.setObscured(true);
+
+		// Act & Assert
+		Assert.assertTrue(credentialsObscuredGet200Response1.equals(credentialsObscuredGet200Response1));
+	}
+
+	@Test
+	public void testNullOrOtherClassEqualsCheck() {
+		// Arrange
+		credentialsObscuredGet200Response1.setObscured(true);
+
+		// Act & Assert
+		Assert.assertFalse(credentialsObscuredGet200Response1.equals(null));
+		Assert.assertFalse(credentialsObscuredGet200Response1.equals(new String("Test")));
+	}
+
+	@Test
+	public void testClassEqualityCheck() {
+		// Arrange
+		credentialsObscuredGet200Response1.setObscured(true);
+		credentialsObscuredGet200Response2.setObscured(true);
+
+		// Act & Assert
+		Assert.assertTrue(credentialsObscuredGet200Response1.equals(credentialsObscuredGet200Response2));
+	}
 
 }

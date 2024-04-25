@@ -13,15 +13,11 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 @Configuration
 public class SpringDocConfiguration {
 
-    @Bean(name = "org.openapitools.configuration.SpringDocConfiguration.apiInfo")
-    OpenAPI apiInfo() {
-        return new OpenAPI()
-                .info(
-                        new Info()
-                                .title("Login API")
-                                .description("The API specification for Login functionality based on given Gherkin scenarios")
-                                .version("1.0.0")
-                )
-        ;
-    }
+	@Bean(name = "org.openapitools.configuration.SpringDocConfiguration.apiInfo")
+	OpenAPI apiInfo() {
+		return new OpenAPI().info(new Info().title("Login API")
+			.description("The API specification for Login functionality based on given Gherkin scenarios")
+			.version("1.0.0"));
+	}
+
 }

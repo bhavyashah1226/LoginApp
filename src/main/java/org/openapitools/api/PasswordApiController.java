@@ -2,7 +2,6 @@ package org.openapitools.api;
 
 import org.openapitools.model.UsernamePostRequest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,21 +25,22 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Controller
 @RequestMapping("${openapi.login.base-path:}")
 public class PasswordApiController implements PasswordApi {
 
-    private final NativeWebRequest request;
+	private final NativeWebRequest request;
 
-    @Autowired
-    public PasswordApiController(NativeWebRequest request) {
-        this.request = request;
-    }
+	@Autowired
+	public PasswordApiController(NativeWebRequest request) {
+		this.request = request;
+	}
 
-    @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+	@Override
+	public Optional<NativeWebRequest> getRequest() {
+		return Optional.ofNullable(request);
+	}
 
 }

@@ -33,7 +33,7 @@ Scenario 2: Test hashCode When Status has valid non-null value
   - Assert: Compare the hashcodes of both the objects.
 - Validation: The expected result is that both the hashcodes would be the same. This test verifies that the hashCode function is consistent for the same value of status.
 
-Scenario 3: Test hashCode When Status has different values 
+Scenario 3: Test hashCode When Status has different values
 - TestName: testHashCodeWhenStatusDiffers
 - Description: This test is meant to check if the hashCode method provides different hashCode for different status.
 - Execution:
@@ -42,7 +42,7 @@ Scenario 3: Test hashCode When Status has different values
   - Assert: Compare the hashcodes of both the objects.
 - Validation: The expected result is that the hashcodes of the two objects would be different. It's significant for the test as the hashCode must vary for objects with different values, ensuring proper functionality.
 
-Scenario 4: Test hashCode Consistency with Same Object 
+Scenario 4: Test hashCode Consistency with Same Object
 - TestName: testHashCodeConsistency
 - Description: This test is meant to confirm that the hashCode of the same object remains consistent across multiple invocations.
 - Execution:
@@ -63,43 +63,45 @@ import static org.junit.Assert.assertNotEquals;
 import java.util.Objects;
 
 public class LoginButtonStatusGet200ResponseHashCodeTest {
-    private LoginButtonStatusGet200Response loginButtonStatusGet200Response;
-    
-    @Before
-    public void setup() {
-        loginButtonStatusGet200Response = new LoginButtonStatusGet200Response();
-    }
 
-    @Test
-    public void testHashCodeWhenStatusNull() {
-        loginButtonStatusGet200Response.setStatus(null);
-        int expectedResult = Objects.hash((String) null);
-        assertEquals(expectedResult, loginButtonStatusGet200Response.hashCode());
-    }
+	private LoginButtonStatusGet200Response loginButtonStatusGet200Response;
 
-    @Test
-    public void testHashCodeWhenStatusHasValue() {
-        String status = "Active";
-        loginButtonStatusGet200Response.setStatus(status);
-        LoginButtonStatusGet200Response otherResponse = new LoginButtonStatusGet200Response();
-        otherResponse.setStatus(status);
-        assertEquals(otherResponse.hashCode(), loginButtonStatusGet200Response.hashCode());
-    }
-  
-    @Test
-    public void testHashCodeWhenStatusDiffers() {
-        String status1 = "Active";
-        String status2 = "Inactive";
-        loginButtonStatusGet200Response.setStatus(status1);
-        LoginButtonStatusGet200Response otherResponse = new LoginButtonStatusGet200Response();
-        otherResponse.setStatus(status2);
-        assertNotEquals(otherResponse.hashCode(), loginButtonStatusGet200Response.hashCode());
-    }
-    
-    @Test
-    public void testHashCodeConsistency() {
-        String status = "Active";
-        loginButtonStatusGet200Response.setStatus(status);
-        assertEquals(loginButtonStatusGet200Response.hashCode(), loginButtonStatusGet200Response.hashCode());
-    }
+	@Before
+	public void setup() {
+		loginButtonStatusGet200Response = new LoginButtonStatusGet200Response();
+	}
+
+	@Test
+	public void testHashCodeWhenStatusNull() {
+		loginButtonStatusGet200Response.setStatus(null);
+		int expectedResult = Objects.hash((String) null);
+		assertEquals(expectedResult, loginButtonStatusGet200Response.hashCode());
+	}
+
+	@Test
+	public void testHashCodeWhenStatusHasValue() {
+		String status = "Active";
+		loginButtonStatusGet200Response.setStatus(status);
+		LoginButtonStatusGet200Response otherResponse = new LoginButtonStatusGet200Response();
+		otherResponse.setStatus(status);
+		assertEquals(otherResponse.hashCode(), loginButtonStatusGet200Response.hashCode());
+	}
+
+	@Test
+	public void testHashCodeWhenStatusDiffers() {
+		String status1 = "Active";
+		String status2 = "Inactive";
+		loginButtonStatusGet200Response.setStatus(status1);
+		LoginButtonStatusGet200Response otherResponse = new LoginButtonStatusGet200Response();
+		otherResponse.setStatus(status2);
+		assertNotEquals(otherResponse.hashCode(), loginButtonStatusGet200Response.hashCode());
+	}
+
+	@Test
+	public void testHashCodeConsistency() {
+		String status = "Active";
+		loginButtonStatusGet200Response.setStatus(status);
+		assertEquals(loginButtonStatusGet200Response.hashCode(), loginButtonStatusGet200Response.hashCode());
+	}
+
 }

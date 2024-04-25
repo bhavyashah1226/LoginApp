@@ -22,38 +22,38 @@ Solution: Use only trusted input to set the hostname of a URI. Consider allowing
 """
 Scenario 1: Successful username retrieval
 
-Details:  
+Details:
   TestName: getUsernameSuccessfully
-  Description: This test is meant to check the functionality of the getUsername() method whereby it successfully retrieves the username value. 
+  Description: This test is meant to check the functionality of the getUsername() method whereby it successfully retrieves the username value.
 Execution:
   Arrange: Set the 'username' variable to a known value.
-  Act: Invoke the getUsername() method. 
+  Act: Invoke the getUsername() method.
   Assert: Use JUnit assertions to compare the return value against the known username value that was set.
-Validation: 
+Validation:
   The assertion aims to verify that the getUsername() method returns the correct username value. This is crucial in validating that the method can correctly retrieve and return stored user data.
 
 Scenario 2: Username is null
 
-Details:  
+Details:
   TestName: getUsernameWhenNull
-  Description: This test checks what happens when getUsername() method is invoked and the 'username' variable is null. 
+  Description: This test checks what happens when getUsername() method is invoked and the 'username' variable is null.
 Execution:
   Arrange: Set the 'username' variable to null.
-  Act: Invoke the getUsername() method. 
+  Act: Invoke the getUsername() method.
   Assert: Use JUnit assertions to expect a null value.
-Validation: 
+Validation:
   The assertion verifies that when the 'username' variable is null, the getUsername() method successfully handles this edge case and returns null instead of causing a NullPointerException. This is important for the persistence of the application should this scenario occur.
 
 Scenario 3: Username is an empty string
 
-Details:  
+Details:
   TestName: getUsernameWhenEmpty
-  Description: This test aims to check the behavior of the getUsername() method when the 'username' variable is set to an empty string. 
+  Description: This test aims to check the behavior of the getUsername() method when the 'username' variable is set to an empty string.
 Execution:
   Arrange: Set the 'username' variable to an empty string.
-  Act: Invoke the getUsername() method. 
+  Act: Invoke the getUsername() method.
   Assert: Use JUnit assertions to compare the return value against an empty string.
-Validation: 
+Validation:
   The assertion tests whether the getUsername() method copes with edge cases where the username is an empty string. This keeps with the principle that an application should account for and correctly handle all possible inputs and states.
 """
 */
@@ -68,47 +68,49 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class LoginPostRequestGetUsernameTest {
-    private LoginPostRequest loginPostRequest;
 
-    @Before
-    public void setUp() {
-        loginPostRequest = new LoginPostRequest();
-    }
+	private LoginPostRequest loginPostRequest;
 
-    @Test
-    public void getUsernameSuccessfully() {
-        // Arrange
-        String expectedUsername = "TestUser";
-        loginPostRequest.setUsername(expectedUsername);
+	@Before
+	public void setUp() {
+		loginPostRequest = new LoginPostRequest();
+	}
 
-        // Act
-        String actualUsername = loginPostRequest.getUsername();
+	@Test
+	public void getUsernameSuccessfully() {
+		// Arrange
+		String expectedUsername = "TestUser";
+		loginPostRequest.setUsername(expectedUsername);
 
-        // Assert
-        assertEquals(expectedUsername, actualUsername);
-    }
+		// Act
+		String actualUsername = loginPostRequest.getUsername();
 
-    @Test
-    public void getUsernameWhenNull() {
-        // Arrange
-        loginPostRequest.setUsername(null);
+		// Assert
+		assertEquals(expectedUsername, actualUsername);
+	}
 
-        // Act
-        String actualUsername = loginPostRequest.getUsername();
+	@Test
+	public void getUsernameWhenNull() {
+		// Arrange
+		loginPostRequest.setUsername(null);
 
-        // Assert
-        assertNull(actualUsername);
-    }
+		// Act
+		String actualUsername = loginPostRequest.getUsername();
 
-    @Test
-    public void getUsernameWhenEmpty() {
-        // Arrange
-        loginPostRequest.setUsername("");
+		// Assert
+		assertNull(actualUsername);
+	}
 
-        // Act
-        String actualUsername = loginPostRequest.getUsername();
+	@Test
+	public void getUsernameWhenEmpty() {
+		// Arrange
+		loginPostRequest.setUsername("");
 
-        // Assert
-        assertEquals("", actualUsername);
-    }
+		// Act
+		String actualUsername = loginPostRequest.getUsername();
+
+		// Assert
+		assertEquals("", actualUsername);
+	}
+
 }

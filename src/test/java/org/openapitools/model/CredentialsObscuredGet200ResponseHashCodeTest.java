@@ -15,26 +15,26 @@ Issue: In the broader context, if the `hashCode()` method, where `obscured` is b
 Solution: Introduce proper input validation checks before feeding values into hash functions. This could mean sanitization, using regex checks, or other means to ensure that the input is in the expected format and range before using it.
 
 ================================================================================
-Scenario 1: Test with Non-null 'obscured' 
-Details:  
+Scenario 1: Test with Non-null 'obscured'
+Details:
   TestName: testHashCodeNonNullObscured
-  Description: This test scenario checks if the hashCode method generates the correct hash for non-null 'obscured'. 
+  Description: This test scenario checks if the hashCode method generates the correct hash for non-null 'obscured'.
 Execution:
   Arrange: Set the 'obscured' with a non-null value.
   Act: Call the hashCode method.
   Assert: Compare the actual hashCode with the expected one generated from 'obscured'.
-Validation: 
+Validation:
   The test verifies that the hashCode method generates the correct hash for non-null 'obscured'. Expecting the same hash generated as per the Objects.hash function which uses the hashCode method of the 'obscured' object.
 
-Scenario 2: Test with Null 'obscured' 
-Details:  
+Scenario 2: Test with Null 'obscured'
+Details:
   TestName: testHashCodeNullObscured
-  Description: This test scenario tests if the hashCode method handles null 'obscured' correctly. 
+  Description: This test scenario tests if the hashCode method handles null 'obscured' correctly.
 Execution:
-  Arrange: Set 'obscured' to null. 
-  Act: Call the hashCode method. 
+  Arrange: Set 'obscured' to null.
+  Act: Call the hashCode method.
   Assert: Verify if the hashCode is 0 (since Objects.hash returns 0 when the parameter is null).
-Validation: 
+Validation:
   The test verifies that the hashCode method appropriately handles and returns zero for null 'obscured' parameter. This behavior is significant as it assures the code doesn't break when the 'obscured' is null and it adheres to the contract specified in the method.
 
 Scenario 3: Test with Different 'obscured' Values
@@ -52,6 +52,7 @@ Validation:
 // ********RoostGPT********
 // Importing the necessary libraries
 package org.openapitools.model;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,42 +60,43 @@ import java.util.Objects;
 
 public class CredentialsObscuredGet200ResponseHashCodeTest {
 
-    CredentialsObscuredGet200Response credentialsObscuredGet200Response;
+	CredentialsObscuredGet200Response credentialsObscuredGet200Response;
 
-    // Setting up a fresh instance of CredentialsObscuredGet200Response before each test
-    @Before
-    public void setUp() {
-        credentialsObscuredGet200Response = new CredentialsObscuredGet200Response();
-    }
+	// Setting up a fresh instance of CredentialsObscuredGet200Response before each test
+	@Before
+	public void setUp() {
+		credentialsObscuredGet200Response = new CredentialsObscuredGet200Response();
+	}
 
-    // Test with Non-null 'obscured'
-    @Test
-    public void testHashCodeNonNullObscured() {
-        Boolean obscured = true;
-        credentialsObscuredGet200Response.setObscured(obscured);
-        int expectedHashCode = Objects.hash(obscured);
-        Assert.assertEquals(expectedHashCode, credentialsObscuredGet200Response.hashCode());
-    }
+	// Test with Non-null 'obscured'
+	@Test
+	public void testHashCodeNonNullObscured() {
+		Boolean obscured = true;
+		credentialsObscuredGet200Response.setObscured(obscured);
+		int expectedHashCode = Objects.hash(obscured);
+		Assert.assertEquals(expectedHashCode, credentialsObscuredGet200Response.hashCode());
+	}
 
-    // Test with Null 'obscured'
-    @Test
-    public void testHashCodeNullObscured() {
-        credentialsObscuredGet200Response.setObscured(null);
-        int expectedHashCode = Objects.hash((Object) null);
-        Assert.assertEquals(expectedHashCode, credentialsObscuredGet200Response.hashCode());
-    }
+	// Test with Null 'obscured'
+	@Test
+	public void testHashCodeNullObscured() {
+		credentialsObscuredGet200Response.setObscured(null);
+		int expectedHashCode = Objects.hash((Object) null);
+		Assert.assertEquals(expectedHashCode, credentialsObscuredGet200Response.hashCode());
+	}
 
-    // Test with Different 'obscured' Values
-    @Test
-    public void testHashCodeDifferentObscuredValues() {
-        // first hashcode
-        credentialsObscuredGet200Response.setObscured(false);
-        int firstHashCode = credentialsObscuredGet200Response.hashCode();
+	// Test with Different 'obscured' Values
+	@Test
+	public void testHashCodeDifferentObscuredValues() {
+		// first hashcode
+		credentialsObscuredGet200Response.setObscured(false);
+		int firstHashCode = credentialsObscuredGet200Response.hashCode();
 
-        // second hashcode
-        credentialsObscuredGet200Response.setObscured(true);
-        int secondHashCode = credentialsObscuredGet200Response.hashCode();
+		// second hashcode
+		credentialsObscuredGet200Response.setObscured(true);
+		int secondHashCode = credentialsObscuredGet200Response.hashCode();
 
-        Assert.assertNotEquals(firstHashCode, secondHashCode);
-    }
+		Assert.assertNotEquals(firstHashCode, secondHashCode);
+	}
+
 }
