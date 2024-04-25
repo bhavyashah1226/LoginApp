@@ -22,76 +22,77 @@ Solution: Avoid deserialization of untrusted data. If this is not possible, ensu
 """
   Scenario 1: Valid Hash Code Generation
 
-  Details:  
+  Details:
     TestName: generateValidHashCode
     Description: This test is meant to check the correct hash code generation from the given text field by using the hashCode() method.
   Execution:
     Arrange: Set up the text field with a valid string value.
     Act: Invoke the hashCode() method.
     Assert: Compare the generated hash code with the expected value which is calculated manually.
-  Validation: 
+  Validation:
     This will verify whether hashCode() method generates correct hash code or not. The expected result is based on the formula used by the hash() method of java.util.Objects class. It checks if the hashCode() method is working as expected and generating the correct hash values.
 
   Scenario 2: Hash Code Generation for Null String
 
-  Details:  
+  Details:
     TestName: generateHashCodeForNullString
     Description: This test is meant to verify the hash code generation if the text field is null.
   Execution:
     Arrange: Set up the text field with a null value.
     Act: Invoke the hashCode() method.
     Assert: The generated hash code is expected to be 0 as given by java.util.Objects class for null values.
-  Validation: 
+  Validation:
     The assertion aims to check if the hashCode() method handles null string values and returns the correct hash code for null, which is 0 according to hash() method in java.util.Objects class. This test ensures the robustness of our hashCode() method when dealing with null values.
-  
+
   Scenario 3: Hash Code Generation for Empty String
 
-  Details:  
+  Details:
     TestName: generateHashCodeForEmptyString
     Description: This test is meant to verify the hash code generation if the text field is an empty string.
   Execution:
     Arrange: Set up the text field with an empty string.
     Act: Invoke the hashCode() method.
     Assert: Verify that the generated hash code matches the hash code of an empty string as provided by java.util.Objects class.
-  Validation: 
-    The assertion aims to verify whether the hashCode() method returns correct hash for empty string or not. It also ensures our hashCode() method handles edge case of empty string. 
+  Validation:
+    The assertion aims to verify whether the hashCode() method returns correct hash for empty string or not. It also ensures our hashCode() method handles edge case of empty string.
 
     """
 */
 
 // ********RoostGPT********
 package org.openapitools.model;
+
 import java.util.Objects;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class UsernamePostRequestHashCodeTest {
 
-    @Test
-    public void generateValidHashCode() {
-        String text = "SamplePostRequest";
-        UsernamePostRequest request = new UsernamePostRequest();
-        request.setText(text);
-        int expectedHashCode = Objects.hash(text);
-        Assert.assertEquals(expectedHashCode, request.hashCode());
-    }
+	@Test
+	public void generateValidHashCode() {
+		String text = "SamplePostRequest";
+		UsernamePostRequest request = new UsernamePostRequest();
+		request.setText(text);
+		int expectedHashCode = Objects.hash(text);
+		Assert.assertEquals(expectedHashCode, request.hashCode());
+	}
 
-    @Test
-    public void generateHashCodeForNullString() {
-        String text = null;
-        UsernamePostRequest request = new UsernamePostRequest();
-        request.setText(text);
-        int expectedHashCode = Objects.hash(text);
-        Assert.assertEquals(expectedHashCode, request.hashCode());
-    }
+	@Test
+	public void generateHashCodeForNullString() {
+		String text = null;
+		UsernamePostRequest request = new UsernamePostRequest();
+		request.setText(text);
+		int expectedHashCode = Objects.hash(text);
+		Assert.assertEquals(expectedHashCode, request.hashCode());
+	}
 
-    @Test
-    public void generateHashCodeForEmptyString() {
-        String text = "";
-        UsernamePostRequest request = new UsernamePostRequest();
-        request.setText(text);
-        int expectedHashCode = Objects.hash(text);
-        Assert.assertEquals(expectedHashCode, request.hashCode());
-    }
+	@Test
+	public void generateHashCodeForEmptyString() {
+		String text = "";
+		UsernamePostRequest request = new UsernamePostRequest();
+		request.setText(text);
+		int expectedHashCode = Objects.hash(text);
+		Assert.assertEquals(expectedHashCode, request.hashCode());
+	}
+
 }
-

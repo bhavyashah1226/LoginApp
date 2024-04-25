@@ -25,62 +25,62 @@ Solution: Develop a stronger password policy that promotes the use of sufficient
 ================================================================================
 Scenario 1: Valid Username and Password
 
-Details:  
+Details:
   TestName: testValidAdminLogin
   Description: This test is meant to check if the validateLogin method correctly validates a username and password with the correct number of characters and the required mix of letters and numbers.
 Execution:
   Arrange: Set username and password to valid strings of 6 or more characters, consisting of both letters and numbers.
   Act: Invoke the validateLogin() method.
   Assert: Expect the method to return true.
-Validation: 
-  This assertion aims to verify that the method correctly identifies valid usernames and passwords. The expected result is that login details meeting these criteria should be validated successfully. This test ensures that users can log in with valid details. 
+Validation:
+  This assertion aims to verify that the method correctly identifies valid usernames and passwords. The expected result is that login details meeting these criteria should be validated successfully. This test ensures that users can log in with valid details.
 
 Scenario 2: Invalid Username length
 
-Details:  
+Details:
   TestName: testInvalidUsernameLength
   Description: This test is meant to check whether the validateLogin method correctly identifies a username that is too short.
 Execution:
   Arrange: Set username to a string less than 6 characters and password to a string more than 5 characters with both numbers and letters.
   Act: Invoke the validateLogin() method.
   Assert: Expect the method to return false.
-Validation: 
+Validation:
   This assertion aims to verify that the method correctly identifies usernames that are too short. The method imposed a limit of minimum 6 characters for identifiers, which this test checks. This test ensures users cannot log in with a short username that does not meet these criteria.
 
-Scenario 3: Invalid Password length 
+Scenario 3: Invalid Password length
 
-Details:  
+Details:
   TestName: testInvalidPasswordLength
   Description: This test is meant to check whether the validateLogin method correctly identifies a password that is too short.
 Execution:
   Arrange: Set username to a string more than 5 characters and password to a string less than 6 characters having both numbers and letters.
-  Act: Invoke the validateLogin() method. 
+  Act: Invoke the validateLogin() method.
   Assert: Expect the method to return false.
-Validation: 
+Validation:
   This assertion aims to verify that the method can correctly identify passwords that are too short. The minimum number of 6 characters has been defined for identifiers and the test checks that method well enough. This test ensures the users cannot log in with short passwords not meeting these criteria.
 
 Scenario 4: Password missing Numbers or Letters
 
-Details:  
+Details:
   TestName: testPasswordMissingNumbersOrLetters
   Description: This test is meant to check whether the validateLogin method correctly identifies a password that does not contain both letters and numbers.
 Execution:
   Arrange: Set username and passwords to a string of more than 5 characters having either only numbers or only letters.
   Act: Invoke the validateLogin() method.
-  Assert: Expect the method to return false. 
-Validation: 
+  Assert: Expect the method to return false.
+Validation:
   This assertion aims to verify that the method can correctly identify if a password does not contain both numbers and letters. This test checks the condition mandated by the function for passwords to have both characters and numbers. This test ensures that logins with passwords not meeting the criteria are rejected.
-  
-Scenario 5: Both Username and Password are Invalid 
 
-Details:  
+Scenario 5: Both Username and Password are Invalid
+
+Details:
   TestName: testInvalidUsernamePassword
   Description: This test is meant to check whether the validateLogin method correctly identifies that both the username and password do not meet the criteria.
 Execution:
   Arrange: Set both username and password to a string less than 6 characters long.
   Act: Invoke the validateLogin() method.
-  Assert: Expect the method to return false. 
-Validation: 
+  Assert: Expect the method to return false.
+Validation:
   This assertion aims to verify that the method can correctly identify invalid username and password inputs. This test ensures that rejection happens with a short username and password not fulfilling minimal length criteria.
 */
 
@@ -93,55 +93,79 @@ import org.junit.Test;
 // The test class name based on the guidelines has been set to 'LoginPostRequestValidateLoginTest'
 public class LoginPostRequestValidateLoginTest {
 
-    @Test
-    public void testValidAdminLogin() {
-        LoginPostRequest postRequest = new LoginPostRequest();
-        postRequest.setUsername("Admin123");
-        postRequest.setPassword("Pass456");
-        Assert.assertEquals(true, postRequest.validateLogin()); // This test case is correct as it checks for a valid login scenario
-    }
+	@Test
+	public void testValidAdminLogin() {
+		LoginPostRequest postRequest = new LoginPostRequest();
+		postRequest.setUsername("Admin123");
+		postRequest.setPassword("Pass456");
+		Assert.assertEquals(true, postRequest.validateLogin()); // This test case is
+																// correct as it checks
+																// for a valid login
+																// scenario
+	}
 
-    @Test
-    public void testInvalidUsernameLength() {
-        LoginPostRequest postRequest = new LoginPostRequest();
-        postRequest.setUsername("Adm1");
-        postRequest.setPassword("Pass456");
-        Assert.assertEquals(false, postRequest.validateLogin()); // This test case correctly checks for an invalid username length as per the business logic
-    }
+	@Test
+	public void testInvalidUsernameLength() {
+		LoginPostRequest postRequest = new LoginPostRequest();
+		postRequest.setUsername("Adm1");
+		postRequest.setPassword("Pass456");
+		Assert.assertEquals(false, postRequest.validateLogin()); // This test case
+																	// correctly checks
+																	// for an invalid
+																	// username length as
+																	// per the business
+																	// logic
+	}
 
-    @Test
-    public void testInvalidPasswordLength() {
-        LoginPostRequest postRequest = new LoginPostRequest();
-        postRequest.setUsername("Admin123");
-        postRequest.setPassword("Pa45");
-        Assert.assertEquals(false, postRequest.validateLogin()); // This test case is correct, it verifies the scenario where password length is less than the valid length 
-    }
+	@Test
+	public void testInvalidPasswordLength() {
+		LoginPostRequest postRequest = new LoginPostRequest();
+		postRequest.setUsername("Admin123");
+		postRequest.setPassword("Pa45");
+		Assert.assertEquals(false, postRequest.validateLogin()); // This test case is
+																	// correct, it
+																	// verifies the
+																	// scenario where
+																	// password length is
+																	// less than the valid
+																	// length
+	}
 
-    @Test
-    public void testPasswordMissingNumbersOrLetters() {
-        LoginPostRequest postRequest = new LoginPostRequest();
-        postRequest.setUsername("Admin123");
-        postRequest.setPassword("Passwo");
-        
-        // Business logic enhancement suggested here: 
-        // the method validateLogin() in LoginPostRequest class could also include a check for presence of atleast one number in the password.
-        // Currently it only checks for presence of atleast one alphabetical character, thus this test case works.
-        // Expected result here is false since although password has more than 5 characters, it lacks numbers.
-        Assert.assertEquals(false, postRequest.validateLogin()); 
+	@Test
+	public void testPasswordMissingNumbersOrLetters() {
+		LoginPostRequest postRequest = new LoginPostRequest();
+		postRequest.setUsername("Admin123");
+		postRequest.setPassword("Passwo");
 
-        postRequest.setPassword("123456");
-        
-        // Similar business logic enhancement suggested here: 
-        // The function validateLogin() in LoginPostRequest class could include a check for presence of atleast one alphabetical character in the password
-        // As it is now, this test case correctly tests for the scenario where password has only numbers.
-        Assert.assertEquals(false, postRequest.validateLogin());
-    }
+		// Business logic enhancement suggested here:
+		// the method validateLogin() in LoginPostRequest class could also include a check
+		// for presence of atleast one number in the password.
+		// Currently it only checks for presence of atleast one alphabetical character,
+		// thus this test case works.
+		// Expected result here is false since although password has more than 5
+		// characters, it lacks numbers.
+		Assert.assertEquals(false, postRequest.validateLogin());
 
-    @Test
-    public void testInvalidUsernamePassword() {
-        LoginPostRequest postRequest = new LoginPostRequest();
-        postRequest.setUsername("Adm1");
-        postRequest.setPassword("Pa45");
-        Assert.assertEquals(false, postRequest.validateLogin()); // This test case correctly checks for both invalid username length and password length
-    }
+		postRequest.setPassword("123456");
+
+		// Similar business logic enhancement suggested here:
+		// The function validateLogin() in LoginPostRequest class could include a check
+		// for presence of atleast one alphabetical character in the password
+		// As it is now, this test case correctly tests for the scenario where password
+		// has only numbers.
+		Assert.assertEquals(false, postRequest.validateLogin());
+	}
+
+	@Test
+	public void testInvalidUsernamePassword() {
+		LoginPostRequest postRequest = new LoginPostRequest();
+		postRequest.setUsername("Adm1");
+		postRequest.setPassword("Pa45");
+		Assert.assertEquals(false, postRequest.validateLogin()); // This test case
+																	// correctly checks
+																	// for both invalid
+																	// username length and
+																	// password length
+	}
+
 }

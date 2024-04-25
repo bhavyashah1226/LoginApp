@@ -34,69 +34,60 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "login", description = "the login API")
 public interface LoginApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * POST /login : Send login request with username and password
-     *
-     * @param loginPostRequest  (required)
-     * @return Successful operation (status code 200)
-     *         or Bad request - username or password is empty (status code 400)
-     *         or Unauthorized - Invalid username or password (status code 401)
-     */
-    @Operation(
-        operationId = "loginPost",
-        summary = "Send login request with username and password",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = LoginPostRequest.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Bad request - username or password is empty", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = LoginPostRequest.class))
-            }),
-            @ApiResponse(responseCode = "401", description = "Unauthorized - Invalid username or password", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = LoginPostRequest.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/login",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    // call the validateLogin method from the LoginPostRequest class for successful login
-    default ResponseEntity<Map<String, String>> loginPost(
-        @Parameter(name = "LoginPostRequest", description = "", required = true) @Valid @RequestBody LoginPostRequest loginPostRequest
-    ) {
-        Map<String, String> responseBody = new HashMap<>();
+	/**
+	 * POST /login : Send login request with username and password
+	 * @param loginPostRequest (required)
+	 * @return Successful operation (status code 200) or Bad request - username or
+	 * password is empty (status code 400) or Unauthorized - Invalid username or password
+	 * (status code 401)
+	 */
+	@Operation(operationId = "loginPost", summary = "Send login request with username and password",
+			responses = {
+					@ApiResponse(responseCode = "200", description = "Successful operation",
+							content = { @Content(mediaType = "application/json",
+									schema = @Schema(implementation = LoginPostRequest.class)) }),
+					@ApiResponse(responseCode = "400", description = "Bad request - username or password is empty",
+							content = { @Content(mediaType = "application/json",
+									schema = @Schema(implementation = LoginPostRequest.class)) }),
+					@ApiResponse(responseCode = "401", description = "Unauthorized - Invalid username or password",
+							content = { @Content(mediaType = "application/json",
+									schema = @Schema(implementation = LoginPostRequest.class)) }) })
+	@RequestMapping(method = RequestMethod.POST, value = "/login", produces = { "application/json" },
+			consumes = { "application/json" })
+	// call the validateLogin method from the LoginPostRequest class for successful login
+	default ResponseEntity<Map<String, String>> loginPost(@Parameter(name = "LoginPostRequest", description = "",
+			required = true) @Valid @RequestBody LoginPostRequest loginPostRequest) {
+		Map<String, String> responseBody = new HashMap<>();
 
-        // check if username or password is empty
-        if (loginPostRequest.getUsername() == null || loginPostRequest.getPassword() == null) {
-            responseBody.put("status", "400");
-            responseBody.put("message", "Bad request - username or password is empty");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
-        }
-        // Validate login credentials
-        if (loginPostRequest.validateLogin()) {
-            // Successful login
-            responseBody.put("status", "200");
-            responseBody.put("message", "Login successful for user: " + loginPostRequest.getUsername());
-            return ResponseEntity.ok(responseBody);  
-        } else {
-            // Invalid credentials
-            responseBody.put("status", "401");
-            responseBody.put("message", "Invalid username or password");
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
-        }   
-    }
-    
+		// check if username or password is empty
+		if (loginPostRequest.getUsername() == null || loginPostRequest.getPassword() == null) {
+			responseBody.put("status", "400");
+			responseBody.put("message", "Bad request - username or password is empty");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
+		}
+		// Validate login credentials
+		if (loginPostRequest.validateLogin()) {
+			// Successful login
+			responseBody.put("status", "200");
+			responseBody.put("message", "Login successful for user: " + loginPostRequest.getUsername());
+			return ResponseEntity.ok(responseBody);
+		}
+		else {
+			// Invalid credentials
+			responseBody.put("status", "401");
+			responseBody.put("message", "Invalid username or password");
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
+		}
+	}
 
 }

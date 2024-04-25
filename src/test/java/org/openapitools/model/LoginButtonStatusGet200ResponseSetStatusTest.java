@@ -20,47 +20,47 @@ Solution: Input validation is key when receiving inputs that will influence the 
 
 ================================================================================
 Scenario 1: Valid Status Value is Set
-Details:  
+Details:
   TestName: setStatusWithValidValue
-  Description: This test will validate if the setStatus can correctly set a valid status value to the object. 
+  Description: This test will validate if the setStatus can correctly set a valid status value to the object.
 Execution:
     Arrange: No setup is required as we are only setting a value.
     Act: Invoke setStatus with a valid status.
     Assert: Use JUnit assertions to confirm the status of the object reflects the status value.
-Validation: 
-  This assertion verifies that a valid status value can be set correctly. This is significant as it checks the basic functionality of the setStatus method. 
+Validation:
+  This assertion verifies that a valid status value can be set correctly. This is significant as it checks the basic functionality of the setStatus method.
 
 Scenario 2: Null Status Value is Set
-Details:  
+Details:
   TestName: setStatusWithNullValue
   Description: The test will check if null status value can be set to an object.
 Execution:
     Arrange: No setup is required as we are only setting a value.
     Act: Invoke setStatus with null.
     Assert: Use JUnit assertions to confirm that the status is null.
-Validation: 
+Validation:
   This assertion is checking if the setStatus method can handle null values. This is significant as it verifies that the object's status can be set as null without throwing exceptions or errors.
 
 Scenario 3: Empty Status Value is Set
-Details:  
+Details:
   TestName: setStatusWithEmptyValue
   Description: This test checks if the setStatus method can handle an empty string being set as a status value.
 Execution:
     Arrange: No setup required as we are only setting a value.
     Act: Invoke setStatus with an empty string.
     Assert: Use JUnit assertions to confirm the status of the object is an empty string.
-Validation: 
-  This assertion verifies if an empty status can be set. This is significant as it checks the capability of the setStatus method to handle empty strings without errors. 
+Validation:
+  This assertion verifies if an empty status can be set. This is significant as it checks the capability of the setStatus method to handle empty strings without errors.
 
 Scenario 4: Long String Value is Set to Status
-Details:  
+Details:
   TestName: setStatusWithLongStringValue
   Description: This test will validate how the setStatus method handles an excessively long string value.
 Execution:
     Arrange: No setup is required as we are only setting a value.
     Act: Invoke setStatus with an excessively long string.
     Assert: Use JUnit assertions to confirm the object status matches the given string.
-Validation: 
+Validation:
   This assertion checks if the setStatus can handle long string values without crashing or truncating the string. This is critical as it checks the robustness of the method with different input lengths.
 */
 
@@ -73,32 +73,34 @@ import static org.junit.Assert.*;
 
 public class LoginButtonStatusGet200ResponseSetStatusTest {
 
-  private LoginButtonStatusGet200Response response = new LoginButtonStatusGet200Response();
+	private LoginButtonStatusGet200Response response = new LoginButtonStatusGet200Response();
 
-  @Test
-  public void testSetStatus_ValidStatus() {
-    String expectedStatus = "Active";
-    response.setStatus(expectedStatus);
-    assertEquals(expectedStatus, response.getStatus());
-  }
+	@Test
+	public void testSetStatus_ValidStatus() {
+		String expectedStatus = "Active";
+		response.setStatus(expectedStatus);
+		assertEquals(expectedStatus, response.getStatus());
+	}
 
-  @Test
-  public void testSetStatus_NullStatus() {
-    response.setStatus(null);
-    assertNull(response.getStatus());
-  }
+	@Test
+	public void testSetStatus_NullStatus() {
+		response.setStatus(null);
+		assertNull(response.getStatus());
+	}
 
-  @Test
-  public void testSetStatus_EmptyStatus() {
-    response.setStatus("");
-    assertEquals("", response.getStatus());
-  }
+	@Test
+	public void testSetStatus_EmptyStatus() {
+		response.setStatus("");
+		assertEquals("", response.getStatus());
+	}
 
-  @Test
-  public void testSetStatus_LongStatusValue() {
-    String longStatus = new String(new char[10000]).replace("\0", "a"); // 10,000 character long string
-    response.setStatus(longStatus);
-    assertEquals(longStatus, response.getStatus());
-  }
+	@Test
+	public void testSetStatus_LongStatusValue() {
+		String longStatus = new String(new char[10000]).replace("\0", "a"); // 10,000
+																			// character
+																			// long string
+		response.setStatus(longStatus);
+		assertEquals(longStatus, response.getStatus());
+	}
+
 }
-

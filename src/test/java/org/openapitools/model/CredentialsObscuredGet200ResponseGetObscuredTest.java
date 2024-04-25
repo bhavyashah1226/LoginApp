@@ -20,33 +20,33 @@ Solution: Implement proper input validation techniques to sanitize user-provided
 
 ================================================================================
 """
-Scenario 1: Test to check if the getObscured() method returns a Boolean type value 
+Scenario 1: Test to check if the getObscured() method returns a Boolean type value
 
-Details:  
+Details:
   TestName: checkGetObscuredReturnBoolean
-  Description: This test checks that the return type of the getObscured() method is a Boolean. 
+  Description: This test checks that the return type of the getObscured() method is a Boolean.
 Execution:
   Arrange: No setup needed for this test as we are not passing any argument to the method.
   Act: Call the getObscured() method.
   Assert: Use the JUnit assertions to verify if the returned value is of Boolean type.
-Validation: 
+Validation:
   The assertion is verifying that the return type is Boolean. This is important because this method is expected to return either true or false. Any other return type would be a violation of the specified functionality.
 
 
-Scenario 2: Test to confirm that the getObscured() method handles null values properly 
+Scenario 2: Test to confirm that the getObscured() method handles null values properly
 
-Details:  
+Details:
   TestName: handleNullValues
   Description: This test mainly checks if the method can handle null values properly without throwing any unexpected exceptions.
 Execution:
   Arrange: Set the field 'obscured' to null before invoking the method.
   Act: Call the getObscured() method.
   Assert: Use the JUnit assertions to verify if the returned value is null.
-Validation: 
+Validation:
   The assertion is verifying that the method returns null when the class field 'obscured' is set to null. This validates that the method can handle null values gracefully without breaking the application's functionality.
 
 
-Scenario 3: Test to ensure the getObscured() method returns expected Boolean values 
+Scenario 3: Test to ensure the getObscured() method returns expected Boolean values
 
 Details:
   TestName: returnExpectedBooleanValues
@@ -55,7 +55,7 @@ Execution:
   Arrange: Set the field 'obscured' to a known value before invoking the method.
   Act: Call the getObscured method.
   Assert: Use JUnit assertions to verify if the returned value matches the initial Boolean value set.
-Validation: 
+Validation:
   The assertion verifies if the known Boolean set is returned which ensures the functionality of this method. This helps in making sure the state of 'obscured' is correctly returned by the method.
 """
 */
@@ -68,33 +68,34 @@ import org.junit.jupiter.api.Test;
 
 public class CredentialsObscuredGet200ResponseGetObscuredTest {
 
-    // Scenario 1: Test to check if the getObscured() method returns a Boolean type value
-    @Test
-    public void checkGetObscuredReturnBoolean() {
-        Boolean testValue = true; // TODO: Change this value
-        CredentialsObscuredGet200Response response = new CredentialsObscuredGet200Response();
-        response.setObscured(testValue);
-        Boolean returnedValue = response.getObscured();
-        Assert.assertTrue(returnedValue instanceof Boolean);
-    }
+	// Scenario 1: Test to check if the getObscured() method returns a Boolean type value
+	@Test
+	public void checkGetObscuredReturnBoolean() {
+		Boolean testValue = true; // TODO: Change this value
+		CredentialsObscuredGet200Response response = new CredentialsObscuredGet200Response();
+		response.setObscured(testValue);
+		Boolean returnedValue = response.getObscured();
+		Assert.assertTrue(returnedValue instanceof Boolean);
+	}
 
-    // Scenario 2: Test to confirm that the getObscured() method handles null values properly
-    @Test
-    public void handleNullValues() {
-        CredentialsObscuredGet200Response response = new CredentialsObscuredGet200Response();
-        response.setObscured(null);
-        Boolean returnedValue = response.getObscured();
-        Assert.assertTrue(returnedValue == null);
-    }
+	// Scenario 2: Test to confirm that the getObscured() method handles null values
+	// properly
+	@Test
+	public void handleNullValues() {
+		CredentialsObscuredGet200Response response = new CredentialsObscuredGet200Response();
+		response.setObscured(null);
+		Boolean returnedValue = response.getObscured();
+		Assert.assertTrue(returnedValue == null);
+	}
 
-    // Scenario 3: Test to ensure the getObscured() method returns expected Boolean values
-    @Test
-    public void returnExpectedBooleanValues() {
-        Boolean testValue = false; // TODO: Change this value
-        CredentialsObscuredGet200Response response = new CredentialsObscuredGet200Response();
-        response.setObscured(testValue);
-        Boolean returnedValue = response.getObscured();
-        Assert.assertFalse(returnedValue);
-    }
-} 
+	// Scenario 3: Test to ensure the getObscured() method returns expected Boolean values
+	@Test
+	public void returnExpectedBooleanValues() {
+		Boolean testValue = false; // TODO: Change this value
+		CredentialsObscuredGet200Response response = new CredentialsObscuredGet200Response();
+		response.setObscured(testValue);
+		Boolean returnedValue = response.getObscured();
+		Assert.assertFalse(returnedValue);
+	}
 
+}

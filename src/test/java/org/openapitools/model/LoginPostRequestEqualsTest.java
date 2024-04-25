@@ -19,15 +19,15 @@ Issue: If the comparison in the equals() method fails and it triggers an excepti
 Solution: Handle exceptions correctly and ensure that error messages don't expose any sensitive information.
 
 ================================================================================
-Scenario 1: Testing Equals Method with Same Object Instances 
+Scenario 1: Testing Equals Method with Same Object Instances
 Details:
   TestName: equalsMethodWithSameInstances
   Description: This test is meant to check if the equals method is correctly identifying that two references pointing to the same object instance are indeed equal.
-Execution: 
+Execution:
   Arrange: Create a single instance of LoginPostRequest and assign it to two different reference variables.
   Act: Call the equals method on one reference and pass the other as a parameter.
   Assert: Assert that the equals method returns true,
-Validation: 
+Validation:
   The assertion aims to verify that the equals method correctly identifies that two references pointing to the same object instance are equal. It validates that equals() works as expected by contract with 'reflexivity' property.
 
 Scenario 2: Testing Equals Method with Two Different Object Instances Having Same Values
@@ -38,8 +38,8 @@ Execution:
   Arrange: Create two different instances of LoginPostRequest with the same username and password values.
   Act: Call the equals method on one instance and pass the other as a parameter.
   Assert: Assert that the equals method returns true.
-Validation: 
-  The assertion confirms that the equals method can correctly identify that two distinct object instances with the same data values are equal. This test is significant as it validates 'symmetry' property of equals method.  
+Validation:
+  The assertion confirms that the equals method can correctly identify that two distinct object instances with the same data values are equal. This test is significant as it validates 'symmetry' property of equals method.
 
 Scenario 3: Testing Equals Method with Different Class Type
 Details:
@@ -49,8 +49,8 @@ Execution:
   Arrange: Create an instance of a different class.
   Act: Call the equals method on the LoginPostRequest instance and pass the different class instance as a parameter.
   Assert: Assert that the equals method returns false.
-Validation: 
-  The assertion aims to verify that the equals method correctly identifies that an object of a different class type is not equal to a LoginPostRequest instance. It's crucial for the consistency of equals method. 
+Validation:
+  The assertion aims to verify that the equals method correctly identifies that an object of a different class type is not equal to a LoginPostRequest instance. It's crucial for the consistency of equals method.
 
 Scenario 4: Testing Equals Method for Null Object
 Details:
@@ -60,8 +60,8 @@ Execution:
   Arrange: No arrangement required.
   Act: Call the equals method on the LoginPostRequest instance and pass null as a parameter.
   Assert: Assert that the equals method returns false.
-Validation: 
-  The assertion aims to verify that the equals method correctly identifies that a null object is not equal to a LoginPostRequest instance. It validates the null safety of equals method. 
+Validation:
+  The assertion aims to verify that the equals method correctly identifies that a null object is not equal to a LoginPostRequest instance. It validates the null safety of equals method.
 
 Scenario 5: Testing Equals Method with Two Different Object Instances Having Different Values
 Details:
@@ -71,8 +71,8 @@ Execution:
   Arrange: Create two different instances of LoginPostRequest with different username and password values.
   Act: Call the equals method on one instance and pass the other as a parameter.
   Assert: Assert that the equals method returns false.
-Validation: 
-  The assertion confirms that the equals method can correctly identify that two distinct object instances with different data values are not equal. This validates that the equals method works accurately for different instances. 
+Validation:
+  The assertion confirms that the equals method can correctly identify that two distinct object instances with different data values are not equal. This validates that the equals method works accurately for different instances.
 
 */
 
@@ -84,60 +84,61 @@ import static org.junit.Assert.*;
 
 public class LoginPostRequestEqualsTest {
 
-    @Test
-    public void equalsMethodWithSameInstances() {
-        LoginPostRequest loginPostRequest1 = new LoginPostRequest();
-        loginPostRequest1.setUsername("User1");
-        loginPostRequest1.setPassword("Password1");
-        
-        LoginPostRequest loginPostRequest2 = loginPostRequest1;
+	@Test
+	public void equalsMethodWithSameInstances() {
+		LoginPostRequest loginPostRequest1 = new LoginPostRequest();
+		loginPostRequest1.setUsername("User1");
+		loginPostRequest1.setPassword("Password1");
 
-        assertTrue(loginPostRequest1.equals(loginPostRequest2));
-    }
+		LoginPostRequest loginPostRequest2 = loginPostRequest1;
 
-    @Test
-    public void equalsMethodWithDifferentInstancesSameValues() {
-        LoginPostRequest loginPostRequest1 = new LoginPostRequest();
-        loginPostRequest1.setUsername("User1");
-        loginPostRequest1.setPassword("Password1");
-        
-        LoginPostRequest loginPostRequest2 = new LoginPostRequest();
-        loginPostRequest2.setUsername("User1");
-        loginPostRequest2.setPassword("Password1");
+		assertTrue(loginPostRequest1.equals(loginPostRequest2));
+	}
 
-        assertTrue(loginPostRequest1.equals(loginPostRequest2));
-    }
-    
-    @Test
-    public void equalsMethodWithDifferentClassType() {
-        LoginPostRequest loginPostRequest = new LoginPostRequest();
-        loginPostRequest.setUsername("User1");
-        loginPostRequest.setPassword("Password1");
-        
-        String differentClassInstance = "I am not a LoginPostRequest instance";
-        
-        assertFalse(loginPostRequest.equals(differentClassInstance));
-    }
+	@Test
+	public void equalsMethodWithDifferentInstancesSameValues() {
+		LoginPostRequest loginPostRequest1 = new LoginPostRequest();
+		loginPostRequest1.setUsername("User1");
+		loginPostRequest1.setPassword("Password1");
 
-    @Test
-    public void equalsMethodWithNullObject() {
-        LoginPostRequest loginPostRequest = new LoginPostRequest();
-        loginPostRequest.setUsername("User1");
-        loginPostRequest.setPassword("Password1");
+		LoginPostRequest loginPostRequest2 = new LoginPostRequest();
+		loginPostRequest2.setUsername("User1");
+		loginPostRequest2.setPassword("Password1");
 
-        assertFalse(loginPostRequest.equals(null));
-    }
+		assertTrue(loginPostRequest1.equals(loginPostRequest2));
+	}
 
-    @Test
-    public void equalsMethodWithDifferentInstancesDifferentValues() {
-        LoginPostRequest loginPostRequest1 = new LoginPostRequest();
-        loginPostRequest1.setUsername("User1");
-        loginPostRequest1.setPassword("Password1");
+	@Test
+	public void equalsMethodWithDifferentClassType() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		loginPostRequest.setUsername("User1");
+		loginPostRequest.setPassword("Password1");
 
-        LoginPostRequest loginPostRequest2 = new LoginPostRequest();
-        loginPostRequest2.setUsername("User2");
-        loginPostRequest2.setPassword("Password2");
+		String differentClassInstance = "I am not a LoginPostRequest instance";
 
-        assertFalse(loginPostRequest1.equals(loginPostRequest2));
-    }
+		assertFalse(loginPostRequest.equals(differentClassInstance));
+	}
+
+	@Test
+	public void equalsMethodWithNullObject() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		loginPostRequest.setUsername("User1");
+		loginPostRequest.setPassword("Password1");
+
+		assertFalse(loginPostRequest.equals(null));
+	}
+
+	@Test
+	public void equalsMethodWithDifferentInstancesDifferentValues() {
+		LoginPostRequest loginPostRequest1 = new LoginPostRequest();
+		loginPostRequest1.setUsername("User1");
+		loginPostRequest1.setPassword("Password1");
+
+		LoginPostRequest loginPostRequest2 = new LoginPostRequest();
+		loginPostRequest2.setUsername("User2");
+		loginPostRequest2.setPassword("Password2");
+
+		assertFalse(loginPostRequest1.equals(loginPostRequest2));
+	}
+
 }
