@@ -11,62 +11,62 @@ Issue: The equals() method checks if the classes of 'this' and 'o' are strictly 
 Solution: Replace the getClass() comparison with 'instanceof' operator. This allows the equals method to handle subclasses correctly.
 
 ================================================================================
-""" 
+"""
   Scenario 1: Test to check when the Object is the same instance
-  Details:  
+  Details:
     TestName: testEqualsWhenSameInstance
-    Description: This test is meant to check the scenario when the object for comparison is the same instance as the target one. 
+    Description: This test is meant to check the scenario when the object for comparison is the same instance as the target one.
   Execution:
     Arrange: A single instance of UsernamePostRequest is set up.
-    Act: The equals method is invoked, using the same instance in the parameter. 
+    Act: The equals method is invoked, using the same instance in the parameter.
     Assert: A JUnit assertion checks that the method returns true.
-  Validation: 
+  Validation:
     The assertion verifies that the equals method correctly returns true when it is the same object instance. This test is crucial to ensuring that comparisons between identical instances are accurately handled.
-  
+
   Scenario 2: Test to check when the Object is null
-  Details:  
+  Details:
     TestName: testEqualsWhenObjectIsNull
     Description: This test aims to check the condition when the object for comparison is null.
   Execution:
     Arrange: An instance of UsernamePostRequest is set up.
-    Act: The equals method is invoked, using null in the parameter. 
+    Act: The equals method is invoked, using null in the parameter.
     Assert: A JUnit assertion confirms that the method returns false.
-  Validation: 
+  Validation:
     The assertion verifies that the equals method correctly returns false when the comparison object is null. This ensures that null values don't cause unexpected application behavior.
 
   Scenario 3: Test to check when the Object is not of the same class
-  Details:  
+  Details:
     TestName: testEqualsWhenObjectsAreDifferentClasses
     Description: This test is used to check the case when the object for comparison is not an instance of same class.
   Execution:
     Arrange: An instance of UsernamePostRequest and another different class object are set up.
-    Act: The equals method is invoked, using the object of a different class in the parameter. 
+    Act: The equals method is invoked, using the object of a different class in the parameter.
     Assert: A JUnit assertion checks that the method returns false.
-  Validation: 
-    The assertion verifies that the equals method appropriately returns false when the object for comparison is not of the same class. This safeguards the application against misidentification between varying types of objects. 
+  Validation:
+    The assertion verifies that the equals method appropriately returns false when the object for comparison is not of the same class. This safeguards the application against misidentification between varying types of objects.
 
   Scenario 4: Test to check when the Object does not have the same text
-  Details:  
+  Details:
     TestName: testEqualsWhenTextIsDifferent
-    Description: The test aims to verify the scenario where two different instances of UsernamePostRequest share the same type but have different text fields. 
+    Description: The test aims to verify the scenario where two different instances of UsernamePostRequest share the same type but have different text fields.
   Execution:
     Arrange: Two instances of UsernamePostRequest with different text values are set up.
-    Act: The equals method is invoked using one of the instances in the parameter. 
+    Act: The equals method is invoked using one of the instances in the parameter.
     Assert: A JUnit assertion verifies that the method returns false.
-  Validation: 
+  Validation:
     The assertion checks that the equals method correctly perceives two objects with different text fields as not equal. This is crucial for maintaining the uniqueness of UsernamePostRequest objects within the system.
 
   Scenario 5: Test to check when the Object is equal
-  Details:  
+  Details:
     TestName: testEqualsWhenObjectsAreEqual
     Description: This test checks the case where two different instances of UsernamePostRequest are considered equal due to identical text fields.
   Execution:
     Arrange: Two instances of UsernamePostRequest with identical text values are set up.
     Act: The equals method is invoked using one of the instances in the parameter.
     Assert: A JUnit assertion verifies that the method returns true.
-  Validation: 
+  Validation:
     The assertion verifies that the equals method accurately perceives two objects with identical text fields as equal. This is significant for maintaining accurate relationships between UsernamePostRequest objects within the system.
-  
+
 """
 */
 
@@ -82,42 +82,44 @@ import static org.junit.Assert.assertNotEquals;
 
 public class UsernamePostRequestEqualsTest {
 
-    private UsernamePostRequest usernamePostRequest1;
-    private UsernamePostRequest usernamePostRequest2;
+	private UsernamePostRequest usernamePostRequest1;
 
-    @Before
-    public void setUp() {
-        usernamePostRequest1 = new UsernamePostRequest();
-        usernamePostRequest2 = new UsernamePostRequest();
-    }
+	private UsernamePostRequest usernamePostRequest2;
 
-    @Test
-    public void testEqualsWhenSameInstance() {
-        assertEquals(usernamePostRequest1, usernamePostRequest1);
-    }
+	@Before
+	public void setUp() {
+		usernamePostRequest1 = new UsernamePostRequest();
+		usernamePostRequest2 = new UsernamePostRequest();
+	}
 
-    @Test
-    public void testEqualsWhenObjectIsNull() {
-        assertNotEquals(usernamePostRequest1, null);
-    }
+	@Test
+	public void testEqualsWhenSameInstance() {
+		assertEquals(usernamePostRequest1, usernamePostRequest1);
+	}
 
-    @Test
-    public void testEqualsWhenObjectsAreDifferentClasses() {
-        Object object = new Object();
-        assertNotEquals(usernamePostRequest1, object);
-    }
+	@Test
+	public void testEqualsWhenObjectIsNull() {
+		assertNotEquals(usernamePostRequest1, null);
+	}
 
-    @Test
-    public void testEqualsWhenTextIsDifferent() {
-        usernamePostRequest1.setText("Hello");
-        usernamePostRequest2.setText("World");
-        assertNotEquals(usernamePostRequest1, usernamePostRequest2);
-    }
+	@Test
+	public void testEqualsWhenObjectsAreDifferentClasses() {
+		Object object = new Object();
+		assertNotEquals(usernamePostRequest1, object);
+	}
 
-    @Test
-    public void testEqualsWhenObjectsAreEqual() {
-        usernamePostRequest1.setText("Hello");
-        usernamePostRequest2.setText("Hello");
-        assertEquals(usernamePostRequest1, usernamePostRequest2);
-    }
+	@Test
+	public void testEqualsWhenTextIsDifferent() {
+		usernamePostRequest1.setText("Hello");
+		usernamePostRequest2.setText("World");
+		assertNotEquals(usernamePostRequest1, usernamePostRequest2);
+	}
+
+	@Test
+	public void testEqualsWhenObjectsAreEqual() {
+		usernamePostRequest1.setText("Hello");
+		usernamePostRequest2.setText("Hello");
+		assertEquals(usernamePostRequest1, usernamePostRequest2);
+	}
+
 }

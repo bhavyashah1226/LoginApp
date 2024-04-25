@@ -31,37 +31,29 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "login-page-load", description = "the login-page-load API")
 public interface LoginPageLoadApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /login-page-load : Check login page load
-     *
-     * @return Successful operation (status code 200)
-     */
-    @Operation(
-        operationId = "loginPageLoadGet",
-        summary = "Check login page load",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/login-page-load"
-    )
-    
-    default ResponseEntity<Void> loginPageLoadGet(
-        
-    ) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /login-page-load : Check login page load
+	 * @return Successful operation (status code 200)
+	 */
+	@Operation(operationId = "loginPageLoadGet", summary = "Check login page load",
+			responses = { @ApiResponse(responseCode = "200", description = "Successful operation") })
+	@RequestMapping(method = RequestMethod.GET, value = "/login-page-load")
 
-    }
+	default ResponseEntity<Void> loginPageLoadGet(
+
+	) {
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

@@ -16,58 +16,62 @@ Solution: Ensure credentials or important data are not hardcoded in your source 
 
 ================================================================================
 Scenario 1: Basic functionality test
-Details:  
+Details:
   TestName: testToStringBasicFunctionality
-  Description: This test is meant to check if the toString() method can correctly format a String representation of a LoginPostRequest object. It verifies the basic functionality and format of the output string. 
+  Description: This test is meant to check if the toString() method can correctly format a String representation of a LoginPostRequest object. It verifies the basic functionality and format of the output string.
 Execution:
   Arrange: Create a LoginPostRequest with unique username and password.
   Act: Invoke the toString() method on the LoginPostRequest and obtain the resulting string.
   Assert: Use JUnit assertions to confirm that the output string matches the expected format and contains correct information.
-Validation: 
+Validation:
   The assertion aims to verify that toString() respects the string format and correctly includes the username and password. This is essential to make sure that the data gets represented correctly in string format when needed.
 
 Scenario 2: Null handling test
-Details:  
+Details:
   TestName: testToStringWithNullFields
   Description: This test checks how the toString() method handles the scenario when username and password are null. It tests the robustness of the function against possible null values.
 Execution:
   Arrange: Create a LoginPostRequest where username and password are null.
   Act: Invoke the toString() method on the LoginPostRequest.
   Assert: Use JUnit assertions to compare the real output against the expected output where the username and password are null.
-Validation: 
+Validation:
   The assertion verifies that the function handles null values correctly and ensures the application's robustness.
 
 Scenario 3: Empty string handling test
-Details:  
+Details:
   TestName: testToStringWithEmptyFields
   Description: This test verifies how the toString() method handles the scenario when username and password are empty strings. This will test the flexibility of the function with different input types.
 Execution:
   Arrange: Create a LoginPostRequest where username and password are empty strings.
   Act: Invoke the toString() method on the LoginPostRequest.
   Assert: Use JUnit assertions to compare the actual output against the expected output where the username and password are empty strings.
-Validation: 
+Validation:
   The assertion verifies the function's complex data handling capability as this test represents an edge case where all string field values in the object are empty.
 */
 
 // ********RoostGPT********
 
 package org.openapitools.model;
+
 import org.junit.Test;
 import org.junit.Assert;
 
 public class LoginPostRequestToStringTest {
-public void testToStringImplementation() {
-    boolean thrown = false;
 
-    try {
-        LoginPostRequest loginPostRequest = new LoginPostRequest();
-        loginPostRequest.setUsername("JohnDoe");
-        loginPostRequest.setPassword("Test1234");
-        loginPostRequest.toString();
-    } catch (Exception e) {
-        thrown = true;
-    }
+	public void testToStringImplementation() {
+		boolean thrown = false;
 
-    Assert.assertFalse("toString method is not implemented correctly in LoginPostRequest class", thrown);
-}
+		try {
+			LoginPostRequest loginPostRequest = new LoginPostRequest();
+			loginPostRequest.setUsername("JohnDoe");
+			loginPostRequest.setPassword("Test1234");
+			loginPostRequest.toString();
+		}
+		catch (Exception e) {
+			thrown = true;
+		}
+
+		Assert.assertFalse("toString method is not implemented correctly in LoginPostRequest class", thrown);
+	}
+
 }

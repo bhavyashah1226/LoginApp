@@ -31,37 +31,30 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "accessibility", description = "the accessibility API")
 public interface AccessibilityApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /accessibility : Check login page accessibility
-     *
-     * @return Successful operation - page is accessible (status code 200)
-     */
-    @Operation(
-        operationId = "accessibilityGet",
-        summary = "Check login page accessibility",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation - page is accessible")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/accessibility"
-    )
-    
-    default ResponseEntity<Void> accessibilityGet(
-        
-    ) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /accessibility : Check login page accessibility
+	 * @return Successful operation - page is accessible (status code 200)
+	 */
+	@Operation(operationId = "accessibilityGet", summary = "Check login page accessibility",
+			responses = {
+					@ApiResponse(responseCode = "200", description = "Successful operation - page is accessible") })
+	@RequestMapping(method = RequestMethod.GET, value = "/accessibility")
 
-    }
+	default ResponseEntity<Void> accessibilityGet(
+
+	) {
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

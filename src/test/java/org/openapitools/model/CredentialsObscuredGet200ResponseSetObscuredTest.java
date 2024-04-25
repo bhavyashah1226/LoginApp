@@ -6,39 +6,39 @@ ROOST_METHOD_HASH=setObscured_34cfe49893
 ROOST_METHOD_SIG_HASH=setObscured_ba15ad2c89
 
 Scenario 1: Test when setting setObscured to true
-  
-Details:  
+
+Details:
     TestName: testsetObscuredTrue.
-    Description: This test is used to check if the "setObscured" method is setting the boolean value to true. 
+    Description: This test is used to check if the "setObscured" method is setting the boolean value to true.
   Execution:
     Arrange: Instantiate the object, and make sure the initial boolean value for obscured is false.
     Act: Invoke setObscured method with the true parameter.
     Assert: Assert that the obscured value is true now.
-  Validation: 
+  Validation:
     The assertion aims to verify the obscured value after using the setObscured method. This test is significant because it confirms that the method is successful in altering the original value.
 
 Scenario 2: Test when setting setObscured to false
-  
-Details:  
+
+Details:
     TestName: testsetObscuredFalse.
     Description: This test is used to check if the "setObscured" method is setting the boolean value to false.
   Execution:
     Arrange: Instantiate the object, and make sure the initial boolean value for obscured is true.
     Act: Invoke setObscured method with the false parameter.
     Assert: Assert that the obscured value is false now.
-  Validation: 
+  Validation:
     The assertion aims to verify the obscured value after using the setObscured method. This test is significant because it confirms that the method is successful in altering the original value.
 
 Scenario 3: Test when setting setObscured to null
-  
-Details:  
+
+Details:
     TestName: testsetObscuredNull.
     Description: This test is used to check if the "setObscured" method is handling null values correctly.
   Execution:
     Arrange: Instantiate the object.
     Act: Invoke setObscured method with a null parameter.
     Assert: Assert that the obscured value remains at its initial state.
-  Validation: 
+  Validation:
     The assertion aims to verify the obscured value after using the setObscured method with a null value. This test is significant because it confirms that the method has handled the null value correctly without causing a NullPointerException.
 */
 
@@ -50,54 +50,56 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CredentialsObscuredGet200ResponseSetObscuredTest {
-    private CredentialsObscuredGet200Response credentialsObscuredGet200Response;
 
-    @BeforeEach
-    public void setUp() {
-        credentialsObscuredGet200Response = new CredentialsObscuredGet200Response();
-    }
+	private CredentialsObscuredGet200Response credentialsObscuredGet200Response;
 
-    @Test
-    public void testSetObscuredTrue() {
-        // Arrange
-        Boolean initialObscured = false;
-        credentialsObscuredGet200Response.setObscured(initialObscured);
-        
-        // Act
-        Boolean expectedObscured = true;
-        credentialsObscuredGet200Response.setObscured(expectedObscured);
+	@BeforeEach
+	public void setUp() {
+		credentialsObscuredGet200Response = new CredentialsObscuredGet200Response();
+	}
 
-        // Assert
-        Boolean actualObscured = credentialsObscuredGet200Response.getObscured();
-        assertEquals(expectedObscured, actualObscured);
-    }
+	@Test
+	public void testSetObscuredTrue() {
+		// Arrange
+		Boolean initialObscured = false;
+		credentialsObscuredGet200Response.setObscured(initialObscured);
 
-    @Test
-    public void testSetObscuredFalse() {
-        // Arrange
-        Boolean initialObscured = true;
-        credentialsObscuredGet200Response.setObscured(initialObscured);
-        
-        // Act
-        Boolean expectedObscured = false;
-        credentialsObscuredGet200Response.setObscured(expectedObscured);
+		// Act
+		Boolean expectedObscured = true;
+		credentialsObscuredGet200Response.setObscured(expectedObscured);
 
-        // Assert
-        Boolean actualObscured = credentialsObscuredGet200Response.getObscured();
-        assertEquals(expectedObscured, actualObscured);
-    }
+		// Assert
+		Boolean actualObscured = credentialsObscuredGet200Response.getObscured();
+		assertEquals(expectedObscured, actualObscured);
+	}
 
-    @Test
-    public void testSetObscuredNull() {
-        // Arrange
-        Boolean initialObscured = true;
-        credentialsObscuredGet200Response.setObscured(initialObscured);
-        
-        // Act
-        credentialsObscuredGet200Response.setObscured(null);
+	@Test
+	public void testSetObscuredFalse() {
+		// Arrange
+		Boolean initialObscured = true;
+		credentialsObscuredGet200Response.setObscured(initialObscured);
 
-        // Assert
-        Boolean actualObscured = credentialsObscuredGet200Response.getObscured();
-        assertNull(actualObscured);
-    }
+		// Act
+		Boolean expectedObscured = false;
+		credentialsObscuredGet200Response.setObscured(expectedObscured);
+
+		// Assert
+		Boolean actualObscured = credentialsObscuredGet200Response.getObscured();
+		assertEquals(expectedObscured, actualObscured);
+	}
+
+	@Test
+	public void testSetObscuredNull() {
+		// Arrange
+		Boolean initialObscured = true;
+		credentialsObscuredGet200Response.setObscured(initialObscured);
+
+		// Act
+		credentialsObscuredGet200Response.setObscured(null);
+
+		// Assert
+		Boolean actualObscured = credentialsObscuredGet200Response.getObscured();
+		assertNull(actualObscured);
+	}
+
 }

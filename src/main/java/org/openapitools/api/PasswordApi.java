@@ -32,51 +32,41 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "password", description = "the password API")
 public interface PasswordApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * POST /password : Send text to password field
-     *
-     * @param usernamePostRequest  (required)
-     * @return Successful operation (status code 200)
-     */
-    @Operation(
-        operationId = "passwordPost",
-        summary = "Send text to password field",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = UsernamePostRequest.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/password",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    
-    default ResponseEntity<UsernamePostRequest> passwordPost(
-        @Parameter(name = "UsernamePostRequest", description = "", required = true) @Valid @RequestBody UsernamePostRequest usernamePostRequest
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"text\" : \"text\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * POST /password : Send text to password field
+	 * @param usernamePostRequest (required)
+	 * @return Successful operation (status code 200)
+	 */
+	@Operation(operationId = "passwordPost", summary = "Send text to password field",
+			responses = { @ApiResponse(responseCode = "200", description = "Successful operation",
+					content = { @Content(mediaType = "application/json",
+							schema = @Schema(implementation = UsernamePostRequest.class)) }) })
+	@RequestMapping(method = RequestMethod.POST, value = "/password", produces = { "application/json" },
+			consumes = { "application/json" })
 
-    }
+	default ResponseEntity<UsernamePostRequest> passwordPost(@Parameter(name = "UsernamePostRequest", description = "",
+			required = true) @Valid @RequestBody UsernamePostRequest usernamePostRequest) {
+		getRequest().ifPresent(request -> {
+			for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+				if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+					String exampleString = "{ \"text\" : \"text\" }";
+					ApiUtil.setExampleResponse(request, "application/json", exampleString);
+					break;
+				}
+			}
+		});
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

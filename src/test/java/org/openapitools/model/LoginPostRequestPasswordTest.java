@@ -17,36 +17,36 @@ Solution: Avoid using sensitive data in GET request. Use HTTP POST for sending s
 ================================================================================
 """
 Scenario 1: Valid password successfully sets the password
-  Details:  
+  Details:
     TestName: handleValidPassword.
-    Description: The test is designed to check if a valid password is successfully set by the method. 
+    Description: The test is designed to check if a valid password is successfully set by the method.
   Execution:
     Arrange: Create a new LoginPostRequest instance and define a valid password string.
     Act: Invoke the password() method of the created instance with the valid password as an argument.
     Assert: Assert that the returned object from the password() method should be same as the instance on which the method was invoked.
-  Validation: 
+  Validation:
     If the password() method can successfully set the password, it should return the same instance on which it was invoked. This confirms that the password has been set successfully without any exceptions or errors.
 
 Scenario 2: Handling of null password argument
-  Details:  
+  Details:
     TestName: handleNullPasswordArgument.
     Description: This test is intended to check the behavior of the password() method when null is passed as an argument.
   Execution:
     Arrange: Create a new LoginPostRequest instance.
-    Act: Invoke the password() method of the created instance with null as the argument. 
+    Act: Invoke the password() method of the created instance with null as the argument.
     Assert: Assert that the returned object from the password() method should be same as the instance on which the method was invoked.
-  Validation: 
-    The purpose of this assertion is to verify that the password() method can handle null arguments and it does not throw an exception when null is passed. Instead, it continues execution and returns the same instance. 
+  Validation:
+    The purpose of this assertion is to verify that the password() method can handle null arguments and it does not throw an exception when null is passed. Instead, it continues execution and returns the same instance.
 
 Scenario 3: Empty string as a password
-  Details:  
+  Details:
     TestName: handleEmptyStringPassword.
     Description: The test is focused on the functionality of the password() method when an empty string is passed as a password.
   Execution:
     Arrange: Create a new LoginPostRequest instance.
-    Act: Invoke the password() method of the instance with an empty string as the argument. 
+    Act: Invoke the password() method of the instance with an empty string as the argument.
     Assert: Assert that returned object from the password() method should be same as the instance on which the method was invoked.
-  Validation: 
+  Validation:
     The assertion aims to validate that the password() method handles an empty string as a password input without throwing any exceptions and returns the same instance on which it was invoked.
 """
 */
@@ -60,33 +60,36 @@ import static org.junit.Assert.*;
 
 public class LoginPostRequestPasswordTest {
 
-    // instance of class we're testing
-    private LoginPostRequest loginPostRequest;
+	// instance of class we're testing
+	private LoginPostRequest loginPostRequest;
 
-    @Before
-    public void setup() {
-        loginPostRequest = new LoginPostRequest();
-    }
+	@Before
+	public void setup() {
+		loginPostRequest = new LoginPostRequest();
+	}
 
-    // Test scenario : When a valid password is given it should handle appropriately.
-    @Test
-    public void handleValidPassword() {
-        String validPassword = "p@ssw0rd";
-        LoginPostRequest testResult = loginPostRequest.password(validPassword);
-        assertEquals(loginPostRequest, testResult);
-    }
+	// Test scenario : When a valid password is given it should handle appropriately.
+	@Test
+	public void handleValidPassword() {
+		String validPassword = "p@ssw0rd";
+		LoginPostRequest testResult = loginPostRequest.password(validPassword);
+		assertEquals(loginPostRequest, testResult);
+	}
 
-    // Test scenario : When password argument is null, it should handle correctly, ideally it should throw an IllegalArgumentException.
-    @Test
-    public void handleNullPasswordArgument() {
-        LoginPostRequest testResult = loginPostRequest.password(null);
-        assertEquals(loginPostRequest, testResult);
-    }
+	// Test scenario : When password argument is null, it should handle correctly, ideally
+	// it should throw an IllegalArgumentException.
+	@Test
+	public void handleNullPasswordArgument() {
+		LoginPostRequest testResult = loginPostRequest.password(null);
+		assertEquals(loginPostRequest, testResult);
+	}
 
-    // Test scenario : When password argument is an empty string, it should handle it correctly, ideally it should throw an IllegalArgumentException.
-    @Test
-    public void handleEmptyStringPassword() {
-        LoginPostRequest testResult = loginPostRequest.password("");
-        assertEquals(loginPostRequest, testResult);
-    }
+	// Test scenario : When password argument is an empty string, it should handle it
+	// correctly, ideally it should throw an IllegalArgumentException.
+	@Test
+	public void handleEmptyStringPassword() {
+		LoginPostRequest testResult = loginPostRequest.password("");
+		assertEquals(loginPostRequest, testResult);
+	}
+
 }
