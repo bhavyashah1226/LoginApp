@@ -13,38 +13,38 @@ Solution: Ensure all input - including usernames - is properly validated. Use ac
 ================================================================================
 Scenario 1: Verify setUsername method correctly sets the username with valid input
 
-Details:  
+Details:
   TestName: checkIfUsernameIsSetCorrectly
   Description: This test aims to verify that the setUsername method successfully sets the username to a valid input.
 Execution:
   Arrange: Create a new instance of the class and a String representing the expected username.
   Act: Invoke the setUsername method with the expected username.
   Assert: Use a getter to retrieve the current username and compare it to the expected username.
-Validation: 
+Validation:
   The assertion verifies that the setUsername method correctly sets the username. This is critical to ensure that the class stores the username correctly.
 
 Scenario 2: Check if setUsername method handles null input correctly
 
-Details:  
+Details:
   TestName: checkUsernameWithNull
   Description: This test checks if the setUsername method can handle a null input properly.
 Execution:
   Arrange: Create a new instance of the class.
   Act: Invoke the setUsername method with null input.
   Assert: Use a getter to retrieve the current username and compare it to null.
-Validation: 
+Validation:
   The assertion checks the setUsername method's ability to handle null inputs. This is critical as null inputs can lead to null pointer exceptions if not handled properly.
 
 Scenario 3: Verify setUsername method handles empty string input
 
-Details:  
+Details:
   TestName: setUsernameWithEmptyString
   Description: This test is meant to check if the setUsername method can handle an input of an empty string correctly.
 Execution:
   Arrange: Create a new instance of the class.
   Act: Invoke the setUsername method with an empty string.
   Assert: Use a getter to retrieve the current username and compare it to an empty string.
-Validation: 
+Validation:
   The assertion verifies setUsername method's ability to handle empty strings. This is important as handling empty strings incorrectly can potentially compromise the application's logic.
 */
 
@@ -56,35 +56,35 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginPostRequestSetUsernameTest {
 
-    @Test
-    public void checkIfUsernameIsSetCorrectly() {
-        LoginPostRequest loginPostRequest = new LoginPostRequest();
-        String expectedUsername = "johnDoe";
-        loginPostRequest.setUsername(expectedUsername);
+	@Test
+	public void checkIfUsernameIsSetCorrectly() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		String expectedUsername = "johnDoe";
+		loginPostRequest.setUsername(expectedUsername);
 
-        String actualUsername = loginPostRequest.getUsername();
+		String actualUsername = loginPostRequest.getUsername();
 
-        assertEquals(expectedUsername, actualUsername);
-    }
+		assertEquals(expectedUsername, actualUsername);
+	}
 
-    @Test
-    public void checkUsernameWithNull() {
-        LoginPostRequest loginPostRequest = new LoginPostRequest();
-        loginPostRequest.setUsername(null);
+	@Test
+	public void checkUsernameWithNull() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		loginPostRequest.setUsername(null);
 
-        String actualUsername = loginPostRequest.getUsername();
+		String actualUsername = loginPostRequest.getUsername();
 
-        assertEquals(null, actualUsername);
-    }
+		assertEquals(null, actualUsername);
+	}
 
-    @Test
-    public void setUsernameWithEmptyString() {
-        LoginPostRequest loginPostRequest = new LoginPostRequest();
-        loginPostRequest.setUsername("");
+	@Test
+	public void setUsernameWithEmptyString() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		loginPostRequest.setUsername("");
 
-        String actualUsername = loginPostRequest.getUsername();
+		String actualUsername = loginPostRequest.getUsername();
 
-        assertEquals("", actualUsername);
-    }
+		assertEquals("", actualUsername);
+	}
 
 }

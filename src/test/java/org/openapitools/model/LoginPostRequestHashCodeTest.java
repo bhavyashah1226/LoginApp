@@ -21,19 +21,19 @@ Solution: Use SecureRandom for generating random values such as session ID's or 
 ================================================================================
 Scenario 1: Test if hashCode Generates Unique Value for Different Object Details
 
-Details:  
+Details:
   TestName: testHashCodeGeneratesUniqueValueForDifferentObject
-  Description: The test is meant to check whether the hashCode method generates a different unique value for each unique object. Objects with different usernames and passwords should have different hash codes. 
+  Description: The test is meant to check whether the hashCode method generates a different unique value for each unique object. Objects with different usernames and passwords should have different hash codes.
   Execution:
     Arrange: Create two objects with different usernames and passwords.
     Act: Invoke the hashCode method for both objects.
     Assert: The hash codes for two different objects should not be equal.
   Validation:
     The assertion aims to verify that the hashCode method correctly creates unique values for distinct objects, thus managing object identification properly. It's crucial for maintaining uniqueness of objects in the application.
-    
+
 Scenario 2: Test if hashCode Returns Identical Result for Same Object Details
 
-Details:  
+Details:
   TestName: testHashCodeReturnsIdenticalResultForSameObject
   Description: This test is designed to confirm whether the hashCode method will return identical results for the same object. That is, if we invoke the hashCode method multiple times on the same object, it should consistently return the same integer value.
   Execution:
@@ -42,10 +42,10 @@ Details:
     Assert: The result derived from executing the hashCode method on the same instance multiple times should always be equal.
   Validation:
     The test verifies that the hashCode method maintains the general contract of the hashCode function in Java, which states that if a method is invoked on the same object multiple times, it should consistently return the same integer, provided no information used in equals comparisons is modified.
-    
+
 Scenario 3: Test if hashCode Handles Null Values Gracefully
 
-Details:  
+Details:
   TestName: testHashCodeHandlesNullValuesGracefully
   Description: It's crucial for the hashCode method to handle null values gracefully. Invoking hashCode on an object with null username or password should not throw a NullPointerException.
   Execution:
@@ -65,49 +65,52 @@ import static org.junit.Assert.*;
 
 public class LoginPostRequestHashCodeTest {
 
-    private LoginPostRequest loginRequest1;
-    private LoginPostRequest loginRequest2;
+	private LoginPostRequest loginRequest1;
 
-    @Before
-    public void setup() {
-        loginRequest1 = new LoginPostRequest();
-        loginRequest2 = new LoginPostRequest();
-    }
+	private LoginPostRequest loginRequest2;
 
-    @Test
-    public void testHashCodeGeneratesUniqueValueForDifferentObjectDetails() {
-        loginRequest1.setUsername("testUser1");
-        loginRequest1.setPassword("pass1");
-        loginRequest2.setUsername("testUser2");
-        loginRequest2.setPassword("pass2");
+	@Before
+	public void setup() {
+		loginRequest1 = new LoginPostRequest();
+		loginRequest2 = new LoginPostRequest();
+	}
 
-        int hashCode1 = loginRequest1.hashCode();
-        int hashCode2 = loginRequest2.hashCode();
+	@Test
+	public void testHashCodeGeneratesUniqueValueForDifferentObjectDetails() {
+		loginRequest1.setUsername("testUser1");
+		loginRequest1.setPassword("pass1");
+		loginRequest2.setUsername("testUser2");
+		loginRequest2.setPassword("pass2");
 
-        assertNotEquals(hashCode1, hashCode2);
-    }
+		int hashCode1 = loginRequest1.hashCode();
+		int hashCode2 = loginRequest2.hashCode();
 
-    @Test
-    public void testHashCodeReturnsIdenticalResultForSameObject() {
-        loginRequest1.setUsername("testUser");
-        loginRequest1.setPassword("pass");
+		assertNotEquals(hashCode1, hashCode2);
+	}
 
-        int initialHashCode = loginRequest1.hashCode();
-        int subsequentHashCode = loginRequest1.hashCode();
+	@Test
+	public void testHashCodeReturnsIdenticalResultForSameObject() {
+		loginRequest1.setUsername("testUser");
+		loginRequest1.setPassword("pass");
 
-        assertEquals(initialHashCode, subsequentHashCode);
-    }
+		int initialHashCode = loginRequest1.hashCode();
+		int subsequentHashCode = loginRequest1.hashCode();
 
-    @Test
-    public void testHashCodeHandlesNullValuesGracefully() {
-        loginRequest1.setUsername(null);
-        loginRequest1.setPassword(null);
+		assertEquals(initialHashCode, subsequentHashCode);
+	}
 
-        try {
-            int hashCode = loginRequest1.hashCode();
-            assertTrue(true); // Asserting true to show that the test has not failed
-        } catch (NullPointerException e) {
-            fail("Should not have thrown NullPointerException");
-        }
-    }
+	@Test
+	public void testHashCodeHandlesNullValuesGracefully() {
+		loginRequest1.setUsername(null);
+		loginRequest1.setPassword(null);
+
+		try {
+			int hashCode = loginRequest1.hashCode();
+			assertTrue(true); // Asserting true to show that the test has not failed
+		}
+		catch (NullPointerException e) {
+			fail("Should not have thrown NullPointerException");
+		}
+	}
+
 }

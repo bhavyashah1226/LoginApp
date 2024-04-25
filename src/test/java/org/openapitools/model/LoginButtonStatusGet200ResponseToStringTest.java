@@ -21,84 +21,85 @@ Solution: Apply a limit to the size of the input data that can be appended to th
 ================================================================================
 Scenario 1: Testing toString for a non-null status.
 
-Details:  
+Details:
   TestName: testToStringWithNonNullStatus.
   Description: This test scenario is meant to verify if the toString method can accurately convert the status of a LoginButtonStatusGet200Response instance to an indented string when the status is a non-null value.
 Execution:
   Arrange: Create a LoginButtonStatusGet200Response instance with a non-null status.
   Act: Invoke the toString method on the instance.
   Assert: Use JUnit assertions to verify that the returned string has the expected format and includes the indented form of the status as a string.
-Validation: 
+Validation:
   This test verifies that the toString method can correctly handle non-null status values. This is essential for any use-cases that require the status of a LoginButtonStatusGet200Response instance to be represented as a formatted string, such as logging or error reporting.
 
 Scenario 2: Testing toString for a null status.
 
-Details:  
+Details:
   TestName: testToStringWithNullStatus.
   Description: This test scenario is meant to verify if the toString method can handle a null status, which can occur if the status of a LoginButtonStatusGet200Response instance has not been set.
 Execution:
   Arrange: Create a LoginButtonStatusGet200Response instance with a null status.
   Act: Invoke the toString method on the instance.
   Assert: Use JUnit assertions to verify that the returned string has the expected format and indicates that the status is null.
-Validation: 
+Validation:
   This test verifies that the toString method can handle a null status. This is crucial as it ensures the method is robust against missing or uninitialized data.
 
 Scenario 3: Testing toString with different status types.
 
-Details:  
+Details:
   TestName: testToStringWithDifferentStatusTypes.
   Description: This test scenario is meant to check if the toString method can handle and accurately represent different types of status values, given that the status field is not strongly typed.
 Execution:
   Arrange: Create multiple LoginButtonStatusGet200Response instances with statuses of various types.
   Act: Invoke the toString method on each instance.
   Assert: Use JUnit assertions to verify that the returned strings accurately represent their respective status types.
-Validation: 
+Validation:
   This test verifies that the toString method is flexible enough to handle statuses of various types. This is crucial as it ensures the method's usability across a wide range of scenarios, given the lack of strong typing for the status field.
 */
 
 // ********RoostGPT********
-  package org.openapitools.model;
+package org.openapitools.model;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LoginButtonStatusGet200ResponseToStringTest {
-    private LoginButtonStatusGet200Response instance;
 
-    @Before
-    public void setup() {
-        instance = new LoginButtonStatusGet200Response();
-    }
-    
-    @Test
-    public void testToStringWithNonNullStatus() {
-        instance.setStatus("Active");
-        final String expected = "class LoginButtonStatusGet200Response {\n    status: Active\n}";
-        assertEquals("Non-null status toString test failed", expected, instance.toString());
-    }
+	private LoginButtonStatusGet200Response instance;
 
-    @Test
-    public void testToStringWithNullStatus() {
-        final String expected = "class LoginButtonStatusGet200Response {\n    status: null\n}";
-        assertEquals("Null status toString test failed", expected, instance.toString());
-    }
+	@Before
+	public void setup() {
+		instance = new LoginButtonStatusGet200Response();
+	}
 
-    @Test
-    public void testToStringWithDifferentStatusTypes() {
-        instance.setStatus("Active");
-        String expected = "class LoginButtonStatusGet200Response {\n    status: Active\n}";
-        assertEquals("Status type as String toString test failed", expected, instance.toString());
-        
-        instance.setStatus(Integer.toString(123));
-        expected = "class LoginButtonStatusGet200Response {\n    status: 123\n}";
-        assertEquals("Status type as Integer toString test failed", expected, instance.toString());
+	@Test
+	public void testToStringWithNonNullStatus() {
+		instance.setStatus("Active");
+		final String expected = "class LoginButtonStatusGet200Response {\n    status: Active\n}";
+		assertEquals("Non-null status toString test failed", expected, instance.toString());
+	}
 
-        final double statusValue = 3.14;
-        
-        instance.setStatus(Double.toString(statusValue));
-        expected = "class LoginButtonStatusGet200Response {\n    status: 3.14\n}";
-        assertEquals("Status type as Double toString test failed", expected, instance.toString());
-    }
+	@Test
+	public void testToStringWithNullStatus() {
+		final String expected = "class LoginButtonStatusGet200Response {\n    status: null\n}";
+		assertEquals("Null status toString test failed", expected, instance.toString());
+	}
+
+	@Test
+	public void testToStringWithDifferentStatusTypes() {
+		instance.setStatus("Active");
+		String expected = "class LoginButtonStatusGet200Response {\n    status: Active\n}";
+		assertEquals("Status type as String toString test failed", expected, instance.toString());
+
+		instance.setStatus(Integer.toString(123));
+		expected = "class LoginButtonStatusGet200Response {\n    status: 123\n}";
+		assertEquals("Status type as Integer toString test failed", expected, instance.toString());
+
+		final double statusValue = 3.14;
+
+		instance.setStatus(Double.toString(statusValue));
+		expected = "class LoginButtonStatusGet200Response {\n    status: 3.14\n}";
+		assertEquals("Status type as Double toString test failed", expected, instance.toString());
+	}
+
 }
-  

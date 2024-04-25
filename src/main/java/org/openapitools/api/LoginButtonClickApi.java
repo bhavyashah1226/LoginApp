@@ -31,37 +31,29 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "login-button-click", description = "the login-button-click API")
 public interface LoginButtonClickApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /login-button-click : Check if login button is clickable
-     *
-     * @return Successful operation (status code 200)
-     */
-    @Operation(
-        operationId = "loginButtonClickGet",
-        summary = "Check if login button is clickable",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/login-button-click"
-    )
-    
-    default ResponseEntity<Void> loginButtonClickGet(
-        
-    ) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /login-button-click : Check if login button is clickable
+	 * @return Successful operation (status code 200)
+	 */
+	@Operation(operationId = "loginButtonClickGet", summary = "Check if login button is clickable",
+			responses = { @ApiResponse(responseCode = "200", description = "Successful operation") })
+	@RequestMapping(method = RequestMethod.GET, value = "/login-button-click")
 
-    }
+	default ResponseEntity<Void> loginButtonClickGet(
+
+	) {
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }
