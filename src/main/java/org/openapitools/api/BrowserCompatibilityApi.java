@@ -31,37 +31,31 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "browser-compatibility", description = "the browser-compatibility API")
 public interface BrowserCompatibilityApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /browser-compatibility : Check login page compatibility on different browsers
-     *
-     * @return Successful operation - page is compatible (status code 200)
-     */
-    @Operation(
-        operationId = "browserCompatibilityGet",
-        summary = "Check login page compatibility on different browsers",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation - page is compatible")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/browser-compatibility"
-    )
-    
-    default ResponseEntity<Void> browserCompatibilityGet(
-        
-    ) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /browser-compatibility : Check login page compatibility on different browsers
+	 * @return Successful operation - page is compatible (status code 200)
+	 */
+	@Operation(operationId = "browserCompatibilityGet",
+			summary = "Check login page compatibility on different browsers",
+			responses = {
+					@ApiResponse(responseCode = "200", description = "Successful operation - page is compatible") })
+	@RequestMapping(method = RequestMethod.GET, value = "/browser-compatibility")
 
-    }
+	default ResponseEntity<Void> browserCompatibilityGet(
+
+	) {
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

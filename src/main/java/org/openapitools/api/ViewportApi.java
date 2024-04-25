@@ -31,37 +31,30 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "viewport", description = "the viewport API")
 public interface ViewportApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /viewport : Check login page responsiveness for different screen sizes
-     *
-     * @return Successful operation - page is responsive (status code 200)
-     */
-    @Operation(
-        operationId = "viewportGet",
-        summary = "Check login page responsiveness for different screen sizes",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation - page is responsive")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/viewport"
-    )
-    
-    default ResponseEntity<Void> viewportGet(
-        
-    ) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /viewport : Check login page responsiveness for different screen sizes
+	 * @return Successful operation - page is responsive (status code 200)
+	 */
+	@Operation(operationId = "viewportGet", summary = "Check login page responsiveness for different screen sizes",
+			responses = {
+					@ApiResponse(responseCode = "200", description = "Successful operation - page is responsive") })
+	@RequestMapping(method = RequestMethod.GET, value = "/viewport")
 
-    }
+	default ResponseEntity<Void> viewportGet(
+
+	) {
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

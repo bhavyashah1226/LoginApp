@@ -32,49 +32,40 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen",
+		date = "2024-03-27T18:23:55.118803+05:30[Asia/Kolkata]", comments = "Generator version: 7.4.0")
 @Validated
 @Tag(name = "login-button-status", description = "the login-button-status API")
 public interface LoginButtonStatusApi {
 
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
+	default Optional<NativeWebRequest> getRequest() {
+		return Optional.empty();
+	}
 
-    /**
-     * GET /login-button-status : Check login button status
-     *
-     * @return Successful operation - button is enabled (status code 200)
-     */
-    @Operation(
-        operationId = "loginButtonStatusGet",
-        summary = "Check login button status",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Successful operation - button is enabled", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = LoginButtonStatusGet200Response.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/login-button-status",
-        produces = { "application/json" }
-    )
-    
-    default ResponseEntity<LoginButtonStatusGet200Response> loginButtonStatusGet(
-        
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"status\" : \"status\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	/**
+	 * GET /login-button-status : Check login button status
+	 * @return Successful operation - button is enabled (status code 200)
+	 */
+	@Operation(operationId = "loginButtonStatusGet", summary = "Check login button status",
+			responses = { @ApiResponse(responseCode = "200", description = "Successful operation - button is enabled",
+					content = { @Content(mediaType = "application/json",
+							schema = @Schema(implementation = LoginButtonStatusGet200Response.class)) }) })
+	@RequestMapping(method = RequestMethod.GET, value = "/login-button-status", produces = { "application/json" })
 
-    }
+	default ResponseEntity<LoginButtonStatusGet200Response> loginButtonStatusGet(
+
+	) {
+		getRequest().ifPresent(request -> {
+			for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+				if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+					String exampleString = "{ \"status\" : \"status\" }";
+					ApiUtil.setExampleResponse(request, "application/json", exampleString);
+					break;
+				}
+			}
+		});
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+	}
 
 }

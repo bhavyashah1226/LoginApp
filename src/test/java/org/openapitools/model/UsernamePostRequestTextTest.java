@@ -18,40 +18,40 @@ Solution: Use safe, parameterized frameworks or libraries, and sanitize and vali
 """
 Scenario 1: Test the method when passed a valid text string
 
-Details:  
+Details:
   TestName: testValidTextPass
   Description: The test is meant to check if the method works as expected when provided a valid text string. The functionality being tested is the proper assignment of this.text and the subsequent return of the UsernamePostRequest object.
 Execution:
   Arrange: Provide a valid string, such as 'Test String'.
   Act: Invoke the method text() with the valid string.
   Assert: Assert if the return value of the text() method matches the Original UsernamePostRequest object.
-Validation: 
+Validation:
   This test verifies the assignment of valid text values. The expected result, in this case, should be the UsernamePostRequest object with the assigned text. The relevance of this test is to ensure that the method correctly assigns the provided text at a basic level, validating its Main functionality.
 
 
 Scenario 2: Test when passed an Empty text string
 
-Details:  
+Details:
   TestName: testEmptyTextPass
   Description: To check if the method behaves as expected when an empty string is passed. Here the functionality in question is the method's ability to handle and assign empty strings.
 Execution:
   Arrange: Provide an empty string.
   Act: Invoke the text() method with the empty string.
-  Assert: Confirms that the method text() returns the original UsernamePostRequest object with the text field now set to an empty string. 
-Validation: 
+  Assert: Confirms that the method text() returns the original UsernamePostRequest object with the text field now set to an empty string.
+Validation:
   This test Checks that the method correctly handles and assigns empty strings. The expected output should be the UsernamePostRequest object having the empty string assigned as text. Relevant in the case when users provide no input in the text field.
 
 
 Scenario 3: Test when passed null
 
-Details:  
+Details:
   TestName: testNullPass
   Description: Examines how the method behaves when a null is passed. Tests the capabilities of the method in handling and assigning null values.
 Execution:
   Arrange: Provide null as the input.
   Act: Invoke the text() method with the null input.
   Assert: Verifies that the text() method returns the original UsernamePostRequest object with the text field set to null.
-Validation: 
+Validation:
   This test seeks to confirm that the method can effectively handle null values. The anticipated result is the UsernamePostRequest object with the text field set to null. This test is crucial in guaranteeing that the application can withstand null user inputs.
 
 """
@@ -66,37 +66,38 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UsernamePostRequestTextTest {
-    private static UsernamePostRequest usernamePostRequest;
 
-    @BeforeClass
-    public static void setUp() {
-        usernamePostRequest = new UsernamePostRequest();
-    }
+	private static UsernamePostRequest usernamePostRequest;
 
-    @AfterClass
-    public static void tearDown() {
-        usernamePostRequest = null;
-    }
+	@BeforeClass
+	public static void setUp() {
+		usernamePostRequest = new UsernamePostRequest();
+	}
 
-    @Test
-    public void testValidTextPass() {
-        String valid_text = "Test String";
-        usernamePostRequest.text(valid_text);
-        assertEquals(valid_text, usernamePostRequest.getText());
-    }
-    
-    @Test 
-    public void testEmptyTextPass() {
-        String emptyText = "";
-        usernamePostRequest.text(emptyText);
-        assertEquals(emptyText, usernamePostRequest.getText());
-    }
+	@AfterClass
+	public static void tearDown() {
+		usernamePostRequest = null;
+	}
 
-    @Test
-    public void testNullPass() {
-        String null_text = null;
-        usernamePostRequest.text(null_text);
-        assertEquals(null_text,
-        usernamePostRequest.getText());
-    }
+	@Test
+	public void testValidTextPass() {
+		String valid_text = "Test String";
+		usernamePostRequest.text(valid_text);
+		assertEquals(valid_text, usernamePostRequest.getText());
+	}
+
+	@Test
+	public void testEmptyTextPass() {
+		String emptyText = "";
+		usernamePostRequest.text(emptyText);
+		assertEquals(emptyText, usernamePostRequest.getText());
+	}
+
+	@Test
+	public void testNullPass() {
+		String null_text = null;
+		usernamePostRequest.text(null_text);
+		assertEquals(null_text, usernamePostRequest.getText());
+	}
+
 }

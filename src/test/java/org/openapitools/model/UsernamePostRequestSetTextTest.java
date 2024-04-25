@@ -23,52 +23,52 @@ Issue: The setter method is public and could be possibly exploited to alter sens
 Solution: Make sure to create and use getters and setters, and limit visibility of your methods and variables to the minimum necessary (i.e., private)
 
 ================================================================================
-Scenario 1: Test Setting a Regular Text 
+Scenario 1: Test Setting a Regular Text
 
-Details:  
+Details:
   TestName: testSetRegularText
-  Description: This test is meant to validate the functionality of setting text for a non-null and non-empty string. 
+  Description: This test is meant to validate the functionality of setting text for a non-null and non-empty string.
 Execution:
   Arrange: Assign a non-null and none empty text string.
   Act: Invoke the setText method with the assigned string.
-  Assert: Use JUnit assertions to ensure the text has been correctly set. 
-Validation: 
+  Assert: Use JUnit assertions to ensure the text has been correctly set.
+Validation:
   This test validates that the string assignment method works correctly. It verifies that the assigned string has been properly set, as this is critical for the expected application behavior and data manipulation.
 
-Scenario 2: Test Setting an Empty Text 
+Scenario 2: Test Setting an Empty Text
 
-Details:  
+Details:
   TestName: testSetEmptyText
   Description: The test aims to observe the outcome when setting an empty text string.
 Execution:
   Arrange: Assign an empty string.
   Act: Invoke the setText method with the empty string.
   Assert: Assert that the text string has been set to empty.
-Validation: 
+Validation:
   This test checks the software's ability to handle empty text data, ensuring it would avoid unexpected behaviors or issues if empty strings are encountered.
 
 Scenario 3: Test Setting a Null Text
 
-Details:  
+Details:
   TestName: testSetNullText
   Description: This test intends to examine the response when setting a null text string.
 Execution:
   Arrange: Assign a null string.
   Act: Invoke the setText method with the null string.
   Assert: Assert that the text string has been set to null.
-Validation: 
+Validation:
   This test verifies the application's ability to handle null text data, an important aspect of error handling that can prevent issues related to null pointer exceptions.
 
-Scenario 4: Test Setting a Very Long Text 
+Scenario 4: Test Setting a Very Long Text
 
-Details:  
+Details:
   TestName: testSetLongText
   Description: The test is designed to stress test the setText method with a text string longer than the expected.
 Execution:
   Arrange: Assign a very long string.
   Act: Invoke the setText method with the long string.
   Assert: Assert that the text string accepts the long string.
-Validation: 
+Validation:
   This test serves to validate the software's ability to handle over-sized text input, which is important in preventing unexpected errors related to maximum data size limitations.
 */
 
@@ -82,73 +82,74 @@ import java.lang.reflect.Field;
 
 public class UsernamePostRequestSetTextTest {
 
-    private UsernamePostRequest usernamePostRequest;
+	private UsernamePostRequest usernamePostRequest;
 
-    @Before
-    public void setUp() {
-        usernamePostRequest = new UsernamePostRequest();
-    }
+	@Before
+	public void setUp() {
+		usernamePostRequest = new UsernamePostRequest();
+	}
 
-    @Test
-    public void testSetRegularText() throws NoSuchFieldException, IllegalAccessException {
-        //Arrange
-        final String text = "Regular text";
+	@Test
+	public void testSetRegularText() throws NoSuchFieldException, IllegalAccessException {
+		// Arrange
+		final String text = "Regular text";
 
-        //Act
-        usernamePostRequest.setText(text);
+		// Act
+		usernamePostRequest.setText(text);
 
-        //Assert
-        final Field field = usernamePostRequest.getClass().getDeclaredField("text");
-        field.setAccessible(true);
-        Assert.assertEquals(text, field.get(usernamePostRequest));
-    }
+		// Assert
+		final Field field = usernamePostRequest.getClass().getDeclaredField("text");
+		field.setAccessible(true);
+		Assert.assertEquals(text, field.get(usernamePostRequest));
+	}
 
-    @Test
-    public void testSetEmptyText() throws NoSuchFieldException, IllegalAccessException {
-        //Arrange
-        final String text = "";
+	@Test
+	public void testSetEmptyText() throws NoSuchFieldException, IllegalAccessException {
+		// Arrange
+		final String text = "";
 
-        //Act
-        usernamePostRequest.setText(text);
+		// Act
+		usernamePostRequest.setText(text);
 
-        //Assert
-        final Field field = usernamePostRequest.getClass().getDeclaredField("text");
-        field.setAccessible(true);
-        Assert.assertEquals(text, field.get(usernamePostRequest));
-    }
+		// Assert
+		final Field field = usernamePostRequest.getClass().getDeclaredField("text");
+		field.setAccessible(true);
+		Assert.assertEquals(text, field.get(usernamePostRequest));
+	}
 
-    @Test
-    public void testSetNullText() throws NoSuchFieldException, IllegalAccessException {
-        //Arrange
-        final String text = null;
+	@Test
+	public void testSetNullText() throws NoSuchFieldException, IllegalAccessException {
+		// Arrange
+		final String text = null;
 
-        //Act
-        usernamePostRequest.setText(text);
+		// Act
+		usernamePostRequest.setText(text);
 
-        //Assert
-        final Field field = usernamePostRequest.getClass().getDeclaredField("text");
-        field.setAccessible(true);
-        Assert.assertNull(field.get(usernamePostRequest));
-    }
+		// Assert
+		final Field field = usernamePostRequest.getClass().getDeclaredField("text");
+		field.setAccessible(true);
+		Assert.assertNull(field.get(usernamePostRequest));
+	}
 
-    @Test
-    public void testSetLongText() throws NoSuchFieldException, IllegalAccessException {
-        //Arrange
-        final int repeatCount = 10000;
-        String singleText = "Long text";
-        StringBuilder builder = new StringBuilder();
-        
-        for (int i = 0; i < repeatCount; i++) {
-            builder.append(singleText);
-        }
-        
-        String text = builder.toString(); // This is your long text repeated 10000 times      
-        //Act
-        usernamePostRequest.setText(text);
+	@Test
+	public void testSetLongText() throws NoSuchFieldException, IllegalAccessException {
+		// Arrange
+		final int repeatCount = 10000;
+		String singleText = "Long text";
+		StringBuilder builder = new StringBuilder();
 
-        //Assert
-        final Field field = usernamePostRequest.getClass().getDeclaredField("text");
-        field.setAccessible(true);
-        Assert.assertEquals(text, field.get(usernamePostRequest));
-    }
+		for (int i = 0; i < repeatCount; i++) {
+			builder.append(singleText);
+		}
+
+		String text = builder.toString(); // This is your long text repeated 10000 times
+		// Act
+		usernamePostRequest.setText(text);
+
+		// Assert
+		final Field field = usernamePostRequest.getClass().getDeclaredField("text");
+		field.setAccessible(true);
+		Assert.assertEquals(text, field.get(usernamePostRequest));
+	}
+
 }
