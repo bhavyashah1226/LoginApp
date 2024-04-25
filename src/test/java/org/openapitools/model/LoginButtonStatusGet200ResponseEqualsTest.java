@@ -15,48 +15,48 @@ Issue: The Objects.equals method may throw a NullPointerException if the 'status
 Solution: Ensure null safety checks are in place before calling methods on objects. Consider using the Optional class from Java 8 to handle potential null values.
 
 ================================================================================
-Scenario 1: Test for Returing True When Two Objects are Same 
-Details:  
+Scenario 1: Test for Returing True When Two Objects are Same
+Details:
   TestName: equalsMethodWithSameObjectReference
-  Description: This test is meant to check if the equals method returns true when the same instance of an object is compared with itself. 
+  Description: This test is meant to check if the equals method returns true when the same instance of an object is compared with itself.
 Execution:
   Arrange: Create an instance of LoginButtonStatusGet200Response and assign it to two different reference variables.
-  Act: Invoke the equals method by passing one reference variable as the parameter. 
+  Act: Invoke the equals method by passing one reference variable as the parameter.
   Assert: Assert that the result should be true.
-Validation: 
+Validation:
   The assertion verifies that comparing an object against itself should return true as per the contract of the equals() method. This test ensures that the implementation works correctly in this scenario.
 
-Scenario 2: Test for Returing False When Comparing with Null 
-Details:  
+Scenario 2: Test for Returing False When Comparing with Null
+Details:
   TestName: equalsMethodWithNullObject
   Description: This test is meant to check if the equals method returns false when compared with a null object.
 Execution:
   Arrange: Create an instance of LoginButtonStatusGet200Response.
-  Act: Invoke the equals method by passing null as the parameter. 
+  Act: Invoke the equals method by passing null as the parameter.
   Assert: Assert that the result should be false.
-Validation: 
+Validation:
   The assertion verifies that comparing an object against null should return false. This test is important for ensuring the method handles null cases correctly and avoids NullPointerException.
 
 Scenario 3: Test for Returning False When Classes are Different
-Details:  
+Details:
   TestName: equalsMethodWithDifferentClassObject
   Description: This test is meant to check if the equals method returns false when compared with an object of a different class.
 Execution:
   Arrange: Create an instance of LoginButtonStatusGet200Response and an object of a different class.
   Act: Invoke the equals method by passing the object of a different class as the parameter.
   Assert: Assert that the result should be false.
-Validation: 
+Validation:
   The assertion verifies that comparing an object against an object of a different class should return false. This test is significant for validating class type checks in the equals method.
 
-Scenario 4: Test for Returing True When Two Objects Have the Same Data 
-Details:  
+Scenario 4: Test for Returing True When Two Objects Have the Same Data
+Details:
   TestName: equalsMethodWithSameObjectData
   Description: This test is meant to check if the equals method returns true when two different objects have the same data values.
 Execution:
   Arrange: Create two instances of LoginButtonStatusGet200Response with the same status data.
   Act: Invoke the equals method by passing one instance as a parameter to the equals method of the other instance.
   Assert: Assert that the result should be true.
-Validation: 
+Validation:
   The assertion verifies that comparing two different objects with identical data should yield true. This is crucial in business logic to identify distinct instances with matching data as equivalent.
 */
 
@@ -68,35 +68,36 @@ import static org.junit.Assert.*;
 
 public class LoginButtonStatusGet200ResponseEqualsTest {
 
-    @Test
-    public void equalsMethodWithSameObjectReference() {
-        LoginButtonStatusGet200Response testObject1 = new LoginButtonStatusGet200Response();
-        testObject1.setStatus("enabled");
-        LoginButtonStatusGet200Response testObject2 = testObject1;
-        assertTrue(testObject1.equals(testObject2));
-    }
+	@Test
+	public void equalsMethodWithSameObjectReference() {
+		LoginButtonStatusGet200Response testObject1 = new LoginButtonStatusGet200Response();
+		testObject1.setStatus("enabled");
+		LoginButtonStatusGet200Response testObject2 = testObject1;
+		assertTrue(testObject1.equals(testObject2));
+	}
 
-    @Test
-    public void equalsMethodWithNullObject() {
-        LoginButtonStatusGet200Response testObject = new LoginButtonStatusGet200Response();
-        testObject.setStatus("enabled");
-        assertFalse(testObject.equals(null));
-    }
+	@Test
+	public void equalsMethodWithNullObject() {
+		LoginButtonStatusGet200Response testObject = new LoginButtonStatusGet200Response();
+		testObject.setStatus("enabled");
+		assertFalse(testObject.equals(null));
+	}
 
-    @Test
-    public void equalsMethodWithDifferentClassObject() {
-        LoginButtonStatusGet200Response testObject = new LoginButtonStatusGet200Response();
-        testObject.setStatus("enabled");
-        String notLoginButtonStatusGet200ResponseObject = "SomeString";
-        assertFalse(testObject.equals(notLoginButtonStatusGet200ResponseObject));
-    }
+	@Test
+	public void equalsMethodWithDifferentClassObject() {
+		LoginButtonStatusGet200Response testObject = new LoginButtonStatusGet200Response();
+		testObject.setStatus("enabled");
+		String notLoginButtonStatusGet200ResponseObject = "SomeString";
+		assertFalse(testObject.equals(notLoginButtonStatusGet200ResponseObject));
+	}
 
-    @Test
-    public void equalsMethodWithSameObjectData() {
-        LoginButtonStatusGet200Response testObject1 = new LoginButtonStatusGet200Response();
-        testObject1.setStatus("enabled");
-        LoginButtonStatusGet200Response testObject2 = new LoginButtonStatusGet200Response();
-        testObject2.setStatus("enabled");
-        assertTrue(testObject1.equals(testObject2));
-    }
+	@Test
+	public void equalsMethodWithSameObjectData() {
+		LoginButtonStatusGet200Response testObject1 = new LoginButtonStatusGet200Response();
+		testObject1.setStatus("enabled");
+		LoginButtonStatusGet200Response testObject2 = new LoginButtonStatusGet200Response();
+		testObject2.setStatus("enabled");
+		assertTrue(testObject1.equals(testObject2));
+	}
+
 }

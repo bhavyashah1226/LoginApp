@@ -21,18 +21,18 @@ Solution: Make sure all user-provided input data is properly encoded before rend
 ================================================================================
 """
 Scenario 1: Successful Username Assignment
-Details:  
+Details:
   TestName: successfulUsernameAssignment.
   Description: This test aims to check that the "username" method correctly assigns the passed username string to the LoginPostRequest object's username field.
 Execution:
   Arrange: Create a LoginPostRequest object and a string representing a username.
-  Act: Invoke the "username" method on the LoginPostRequest object passing the username string as a parameter. 
+  Act: Invoke the "username" method on the LoginPostRequest object passing the username string as a parameter.
   Assert: Assert that the username field of the LoginPostRequest object equals the passed username string.
 Validation:
   This assertion verifies that the method "username" correctly assigns the passed username to the LoginPostRequest object's username field. This test is significant to ensure that the method performs its basic functionality as expected.
 
 Scenario 2: Empty String Username
-Details:  
+Details:
   TestName: emptyStringUsernameAssignment.
   Description: This test aims to check that the "username" method correctly handles an empty string input.
 Execution:
@@ -43,15 +43,15 @@ Validation:
   This assertion verifies that the "username" method correctly assigns an empty string to the username field of the LoginPostRequest object. This test helps check the method's handling of "empty" input and could indicate if special validation needs to be implemented.
 
 Scenario 3: Null Username
-Details:  
+Details:
   TestName: nullUsernameAssignment.
   Description: This test is meant to check the "username" method handles the null username parameter.
 Execution:
   Arrange: Create a LoginPostRequest object.
-  Act: Invoke the "username" method on the LoginPostRequest object passing null as a parameter. 
+  Act: Invoke the "username" method on the LoginPostRequest object passing null as a parameter.
   Assert: Assert that the username field of the LoginPostRequest object is null.
 Validation:
-  This assertion verifies if the "username" method can successfully handle a null input. It's crucial because we would want to ensure the method does not result in unexpected behavior or errors when provided with null input. 
+  This assertion verifies if the "username" method can successfully handle a null input. It's crucial because we would want to ensure the method does not result in unexpected behavior or errors when provided with null input.
 
 """
 
@@ -60,37 +60,39 @@ NOTE: Depending on the underlying implementation, NullPointerExceptions could po
 
 // ********RoostGPT********
 package org.openapitools.model;
+
 import org.junit.Test;
 import org.junit.Assert;
 import org.openapitools.model.LoginPostRequest;
 
 public class LoginPostRequestUsernameTest {
 
-  @Test
-  public void successfulUsernameAssignment() {
-    String username = "testUsername";
+	@Test
+	public void successfulUsernameAssignment() {
+		String username = "testUsername";
 
-    LoginPostRequest request = new LoginPostRequest();
-    request.setUsername(username);  // Updated function name to setUsername
+		LoginPostRequest request = new LoginPostRequest();
+		request.setUsername(username); // Updated function name to setUsername
 
-    Assert.assertEquals(username, request.getUsername());
-  }
+		Assert.assertEquals(username, request.getUsername());
+	}
 
-  @Test
-  public void emptyStringUsernameAssignment() {
-    String username = "";
+	@Test
+	public void emptyStringUsernameAssignment() {
+		String username = "";
 
-    LoginPostRequest request = new LoginPostRequest();
-    request.setUsername(username);  // Updated function name to setUsername
+		LoginPostRequest request = new LoginPostRequest();
+		request.setUsername(username); // Updated function name to setUsername
 
-    Assert.assertEquals(username, request.getUsername());
-  }
+		Assert.assertEquals(username, request.getUsername());
+	}
 
-  @Test
-  public void nullUsernameAssignment() {
-    LoginPostRequest request = new LoginPostRequest();
-    request.setUsername(null);  // Updated function name to setUsername
+	@Test
+	public void nullUsernameAssignment() {
+		LoginPostRequest request = new LoginPostRequest();
+		request.setUsername(null); // Updated function name to setUsername
 
-    Assert.assertNull(request.getUsername());
-  }
+		Assert.assertNull(request.getUsername());
+	}
+
 }

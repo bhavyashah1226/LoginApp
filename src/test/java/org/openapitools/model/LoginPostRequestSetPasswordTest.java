@@ -21,14 +21,14 @@ Solution: Implement proper session management. Change the session ID after a suc
 ================================================================================
 Scenario 1: Test to verify successful setting of password
 
-Details:  
+Details:
   TestName: testSuccessPasswordSetting
-  Description: This test will check whether the method setPassword correctly sets the password. A predefined value is passed, and the result is validated against it. 
+  Description: This test will check whether the method setPassword correctly sets the password. A predefined value is passed, and the result is validated against it.
 Execution:
   Arrange: Create an instance of the class and the preset value for password.
   Act: Call the setPassword method using the set password.
   Assert: Assert that the getPassword method returns the set password.
-Validation: 
+Validation:
   The assert statement verifies that the setPassword function has updated the password successfully. This test is significant as it checks the normal operation and success scenario of the setPassword method.
 
 Scenario 2: Testing if null password can be set
@@ -40,70 +40,70 @@ Execution:
   Arrange: An instance of the class is required.
   Act: Invoke the setPassword method passing a Null value.
   Assert: Assert that invoking getPassword method should return Null.
-Validation: 
+Validation:
   This check is to ensure that the setPassword method can accept Null values. If Null values are unsupported in the application logic, this test scenario will help in identifying potential exceptions or errors.
 
 Scenario 3: Testing with long strings to check the system's ability to handle.
 
-Details:  
+Details:
   TestName: testLongPasswordSetting
   Description: This test checks the setPassword method behavior when it is passed a long string value.
 Execution:
   Arrange: Initialize an instance of the class and a long string as a password.
   Act: Call the setPassword method with the long string password.
   Assert: Assert that the getPassword method should return the set long string.
-Validation: 
+Validation:
   This check is to ensure that the setPassword method can handle very long passwords. This is a boundary scenario where we are testing the system's capability to manage large string values.
 
 Scenario 4: Testing with empty strings
 
-Details:  
+Details:
   TestName: testEmptyPasswordSetting
   Description: This test checks how the system behaves when an empty string is passed to the setPassword function.
 Execution:
   Arrange: An instance of the class is required.
   Act: Invoke the setPassword method with the empty string.
   Assert: Assert that invoking the getPassword method should return an empty string.
-Validation:  
+Validation:
   This test checks if an empty string can be set as a password. This is an important test as in some use cases, the password could be an optional parameter, and the system should be able to handle such a scenario.
 */
 
 // ********RoostGPT********
-  package org.openapitools.model;
+package org.openapitools.model;
 
-  import org.junit.Assert;
-  import org.junit.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
-  public class LoginPostRequestSetPasswordTest {
+public class LoginPostRequestSetPasswordTest {
 
-    @Test
-    public void testSuccessPasswordSetting() {
-      LoginPostRequest loginPostRequest = new LoginPostRequest();
-      String testPassword = "testPassword";
-      loginPostRequest.setPassword(testPassword);
-      Assert.assertEquals("Password did not match", testPassword, loginPostRequest.getPassword());
-    }
+	@Test
+	public void testSuccessPasswordSetting() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		String testPassword = "testPassword";
+		loginPostRequest.setPassword(testPassword);
+		Assert.assertEquals("Password did not match", testPassword, loginPostRequest.getPassword());
+	}
 
-    @Test
-    public void testNullPasswordSetting() {
-      LoginPostRequest loginPostRequest = new LoginPostRequest();
-      loginPostRequest.setPassword(null);
-      Assert.assertNull("Password should be null", loginPostRequest.getPassword());
-    }
+	@Test
+	public void testNullPasswordSetting() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		loginPostRequest.setPassword(null);
+		Assert.assertNull("Password should be null", loginPostRequest.getPassword());
+	}
 
-    @Test
-    public void testLongPasswordSetting() {
-      LoginPostRequest loginPostRequest = new LoginPostRequest();
-      String longPassword = "LongPasswordLongPasswordLongPassword";
-      loginPostRequest.setPassword(longPassword);
-      Assert.assertEquals("Password did not match", longPassword, loginPostRequest.getPassword());
-    }
+	@Test
+	public void testLongPasswordSetting() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		String longPassword = "LongPasswordLongPasswordLongPassword";
+		loginPostRequest.setPassword(longPassword);
+		Assert.assertEquals("Password did not match", longPassword, loginPostRequest.getPassword());
+	}
 
-    @Test
-    public void testEmptyPasswordSetting() {
-      LoginPostRequest loginPostRequest = new LoginPostRequest();
-      loginPostRequest.setPassword("");
-      Assert.assertEquals("Password should be empty", "", loginPostRequest.getPassword());
-    }
+	@Test
+	public void testEmptyPasswordSetting() {
+		LoginPostRequest loginPostRequest = new LoginPostRequest();
+		loginPostRequest.setPassword("");
+		Assert.assertEquals("Password should be empty", "", loginPostRequest.getPassword());
+	}
 
-  }
+}

@@ -20,72 +20,75 @@ Solution: Always sanitize user inputs. Never trust user input blindly. Consider 
 
 ================================================================================
 Scenario 1: Check Empty String
-Details: 
+Details:
   TestName: checkGetTextWhenEmpty
-  Description: This test is meant to check if the getText() method is properly retrieving an empty string. The target scenario is when the text parameter is an empty string. 
-Execution: 
-  Arrange: Set the 'text' variable to an empty string.  
-  Act: Invoke the getText() method. 
+  Description: This test is meant to check if the getText() method is properly retrieving an empty string. The target scenario is when the text parameter is an empty string.
+Execution:
+  Arrange: Set the 'text' variable to an empty string.
+  Act: Invoke the getText() method.
   Assert: Use JUnit assertions to compare the result against an empty string.
-Validation: 
+Validation:
   The assertion aims to verify that the getText() method accurately retrieves an empty string when 'text' is set to an empty string. The significance of this test is to ensure that the application correctly handles scenarios with empty inputs.
 
 Scenario 2: Check Null
-Details: 
+Details:
   TestName: checkGetTextWhenNull
   Description: This test is meant to check if the getText() method is properly retrieving a null value. The target scenario is when the text parameter is null.
-Execution: 
-  Arrange: Set the 'text' variable to null.  
-  Act: Invoke the getText() method. 
+Execution:
+  Arrange: Set the 'text' variable to null.
+  Act: Invoke the getText() method.
   Assert: Use JUnit assertions to compare the result against null.
-Validation: 
+Validation:
   The assertion aims to verify that the getText() method accurately retrieves a null value when 'text' is set to null. The significance of this test is to ensure that the application correctly handles scenarios with null inputs.
 
 Scenario 3: Check Non-Empty String
-Details: 
+Details:
   TestName: checkGetTextWhenNonEmpty
-  Description: This test is meant to check if the getText() method is correctly retrieving non-empty strings. The target scenario is when the text parameter is a non-empty string. 
-Execution: 
-  Arrange: Set the 'text' variable to a non-empty string.  
-  Act: Invoke the getText() method. 
+  Description: This test is meant to check if the getText() method is correctly retrieving non-empty strings. The target scenario is when the text parameter is a non-empty string.
+Execution:
+  Arrange: Set the 'text' variable to a non-empty string.
+  Act: Invoke the getText() method.
   Assert: Use JUnit assertions to compare the result against the non-empty string.
-Validation: 
+Validation:
   The assertion aims to verify that the getText() method can accurately retrieve a non-empty string when 'text' is set to a non-empty string. This test is significant to verify the correct retrieval of strings within the application.
 */
 
 // ********RoostGPT********
 package org.openapitools.model;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class UsernamePostRequestGetTextTest {
-    private UsernamePostRequest usernamePostRequest;
 
-    @Before
-    public void setUp() {
-        usernamePostRequest = new UsernamePostRequest();
-    }
+	private UsernamePostRequest usernamePostRequest;
 
-    @Test
-    public void checkGetTextWhenEmpty() {
-        usernamePostRequest.setText("");
-        String result = usernamePostRequest.getText();
-        assertEquals("", result);
-    }
+	@Before
+	public void setUp() {
+		usernamePostRequest = new UsernamePostRequest();
+	}
 
-    @Test
-    public void checkGetTextWhenNull() {
-        usernamePostRequest.setText(null);
-        String result = usernamePostRequest.getText();
-        assertNull(result);
-    }
+	@Test
+	public void checkGetTextWhenEmpty() {
+		usernamePostRequest.setText("");
+		String result = usernamePostRequest.getText();
+		assertEquals("", result);
+	}
 
-    @Test
-    public void checkGetTextWhenNonEmpty() {
-        usernamePostRequest.setText("test");
-        String result = usernamePostRequest.getText();
-        assertEquals("test", result);
-    }
+	@Test
+	public void checkGetTextWhenNull() {
+		usernamePostRequest.setText(null);
+		String result = usernamePostRequest.getText();
+		assertNull(result);
+	}
+
+	@Test
+	public void checkGetTextWhenNonEmpty() {
+		usernamePostRequest.setText("test");
+		String result = usernamePostRequest.getText();
+		assertEquals("test", result);
+	}
+
 }
